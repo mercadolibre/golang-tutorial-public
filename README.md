@@ -9,3 +9,5 @@
 Ask gustavo.rodriguez@mercadolibre.com
 
 Ask mariano.labarinas@mercadolibre.com
+
+Ask fernando.sccasserra@mercadolibre.com
