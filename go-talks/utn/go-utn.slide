@@ -6,17 +6,10 @@ Mayo 2017
 Fernando Scasserra
 Mariano Labariñas
 
-
-* ¿Quienes Somos?
-
-.image ../resources/fernando.png _ _
-
-.image ../resources/mariano.png _ _
-
 * Motivación
 
 - El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
-- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.7.x y los cambios en la API fueron mínimos.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.8.x y los cambios en la API fueron mínimos.
 - Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
 - Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
 - El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
@@ -28,6 +21,7 @@ Mariano Labariñas
 - Concurrente (multi-core, asincrónico).
 - Que compile a código nativo y rápido.
 - Que tenga un memory footprint bajo.
+- Que fuera lo mas "autocontenido" posible.
 
 * Motivación: Sweet Spot
 
@@ -35,7 +29,7 @@ Mariano Labariñas
 
 - "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
 
-* Algunos proyectos que incluyen Go
+* Quienes actualmente utilizan Go?
 
 - YouTube 
 - dl.google.com
@@ -158,7 +152,7 @@ Comandos básicos desde consola
 	var s = ""
 	s:=""
 
-*Zero* *value:* *0* para tipos numéricos - *false* para booleanos - *""* (string vacio) para strings
+*Zero* *value:* *0* para numéricos - *false* para booleanos - *""* (string vacio) para strings
 
 .play ../resources/src/01_zero_values/main.go
 
@@ -201,11 +195,6 @@ _using_range_
 * Funciones
 
 .play ../resources/src/03_functions/main.go
-
-
-* 1º Ejercicio
-
-Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva la cantidad y la suma total de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
 
 * Conversión de variables
 
@@ -312,32 +301,6 @@ Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva 
 	}
     
 .play ../resources/src/15_composition/2/main.go /^func main/,/^}/
-
-* 2º Ejercicio
-
-Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
-
-- Normales: Pagan el 100%
-- Jubilados: Tienen un 50% de descuento
-- Invitados: No pagan nada
-
-* Collections #1
-
-Arrays
-
-.play ../resources/src/09_collections/1/main.go
-
-* Collections #2
-
-Slices
-
-.play ../resources/src/09_collections/2/main.go
-
-* Collections #3
-
-Maps
-
-.play ../resources/src/09_collections/3/main.go
 
 * Como seguir?
 
