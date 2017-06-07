@@ -1,0 +1,259 @@
+Golang workshop - Day 1
+
+Buenos Aires
+Junio 2017
+
+Gustavo Rodriguez
+Mariano Labariñas
+
+
+* ¿Quienes Somos?
+
+.image ../resources/gustavo.png _ _
+
+.image ../resources/mariano.png _ _
+
+* WIFI
+
+
+Redes disponibles -> visitas y guess
+
+User: Meli
+Pass: Meli.2017
+
+* Motivación
+
+- El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.8.x y los cambios en la API fueron mínimos.
+- Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
+- Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
+- El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
+
+* Motivación: Objetivos
+
+- Que fuera simple para escribir (menos es más). 
+- Que fuera simple para leer (nos pasamos mucho tiempo leyendo código de otras personas).
+- Concurrente (multi-core, asincrónico).
+- Que compile a código nativo y rápido (soporta cross compilation)
+- Que tenga un memory footprint bajo.
+- Que fuera lo mas "autocontenido" posible.
+
+* Motivación
+
+- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
+
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
+
+* Quienes actualmente utilizan Go?
+
+- YouTube 
+- dl.google.com
+- Booking.com
+- Blogger
+- Datadog
+- Facebook
+- Github
+- Google Code 
+- Netflix
+- Mercadolibre ;)
+- [[https://github.com/golang/go/wiki/GoUsers][Otros...]]
+
+* ¿Proyectos hechos en GO?
+
+Docker
+
+.image ../resources/docker.png _ _
+
+* ¿Proyectos hechos en GO?
+
+Kubernetes
+
+.image ../resources/kubernetes.png _ _
+
+* ¿Proyectos hechos en GO?
+
+CockroachDB (first stable relese)
+
+.image ../resources/cockroach.png _ _
+
+* ¿Proyectos hechos en GO?
+
+.image ../resources/dropbox.jpg _ _
+
+* ¿Paradigma?
+
+- Imperativo
+- Estructurado
+- No orientado a objetos (¿?)
+
+* Go Basics
+
+- Fuertemente tipado
+- Inferencia de tipos
+- Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
+- Parámetros pasados siempre por “valor”
+- Punteros para pasar parámetros por “referencia”
+- GC
+- “Semi” Orientado a objetos -> Composition
+- Interfaces
+- Built in Web Server
+- Built in Testing framework
+
+
+* Instalando GO!
+
+- Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
+- Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
+- Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
+- Para chequear tu la instalación correcta tipear -> go version 
+
+* ¿Donde programar?
+
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[hhttps://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
+
+* Go Basics: Workspace
+
+GOPATH
+	|_ BIN: Contiene los archivos ejecutables
+	|_ SRC: Contiene los fuentes organizados en paquetes
+	|_ PKG: Contiene los paquetes en formato binario
+
+*Default* *GOPATH* (go >1.8)
+
+- Unix: $HOME/go 
+- Windows: %USERPROFILE%/go
+
+* Hello world!!
+
+.play ../resources/src/00_hello_world/main.go
+
+Comandos básicos desde consola
+
+	go command [arguments]
+
+	build     Compila paquetes y dependencias
+	clean     Remueve archivos object     
+	get       Descarga e instala paquetes y dependencias
+	install   Compila e instala paquetes y dependencias
+	run       Compila y corre paquetes y dependencias
+	test      Testea paquetes
+	fmt       Formatea tu código
+	...
+
+* Keywords
+
+- Los Keywords son palabras reservadas
+- No pueden ser usados como identificadores
+- Go apunta a ser simple y tener pocos keywords
+
+.image ../resources/keywords.png _ _
+
+
+* Comentarios
+
+- 2 formas de hacer comentarios
+- Estilo C
+	/* Multiline comment
+		..
+	*/
+- Estilo C++
+	// Single line comment
+
+* Tipos Básicos
+
+- bool
+- string
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- byte // alias for uint8
+- rune // alias for int32 - unicode code point
+- float32 float64
+- complex64 complex128
+
+* Constantes
+
+- Pueden ser del tipo: character, string, boolean o valores numéricos
+
+- Ejemplos:
+
+	const World = "世界"
+	const Truth = true
+
+
+* Inicialización de Variables
+
+	var s string
+	var s string = ""
+	var s = ""
+	s:=""
+
+*Zero* *value:*
+
+*0* para numéricos - *false* para booleanos - *""* para strings
+
+.play ../resources/src/01_zero_values/main.go
+
+* Paquetes
+
+.code ../resources/src/04_packages/math/math.go
+.play ../resources/src/04_packages/main.go
+
+* Tipos de if
+
+	if x < 0 { }
+
+	if v := math.Pow(x, n); v < lim {}
+
+	if ... {} else { }
+
+* Iteraciones #1
+
+_for_initialization;_condition;_post_{_}_
+
+.play ../resources/src/02_iterations/0/main.go
+
+* Iteraciones #2
+
+_for_condition_{_}_
+
+.play ../resources/src/02_iterations/1/main.go
+
+* Iteraciones #3
+
+_for_{_}_
+
+.play ../resources/src/02_iterations/2/main.go
+
+* Iteraciones #4
+
+_using_range_
+
+.play ../resources/src/02_iterations/3/main.go
+
+* Switch
+
+.play ../resources/src/02_iterations/4/main.go
+
+* Funciones
+
+.play ../resources/src/03_functions/main.go
+
+* Conversión de variables
+
+.play ../resources/src/05_variables_type_convertion/main.go
+
+* 1º Ejercicio
+
+Hacer un programa que reciba un parámetro *p* por consola y que cacule la suma de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
+
+- Ayuda para leer argumentos desde la consola
+
+	for i := 1; i < len(os.Args); i++ {
+		fmt.Println(os.Args[i])
+	}

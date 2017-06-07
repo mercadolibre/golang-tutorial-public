@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/rodriguezgustavo/go-talks/2016-10-BsAs/resources/src/4_packages/math"
+	"github.com/mercadolibre/golang-tutorial/go-talks/resources/src/04_packages/math"
 )
 
 func main() {
 	var result int
-	args:=[]int{1,2,3,4}
+	args := []int{1, 2, 3, 4}
 	for _, val := range args {
 		result = math.Add(result, val)
 	}
