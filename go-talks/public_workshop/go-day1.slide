@@ -15,7 +15,6 @@ Mariano Labariñas
 
 * WIFI
 
-
 Redes disponibles -> visitas y guess
 
 User: Meli
@@ -106,6 +105,10 @@ CockroachDB (first stable relese)
 - Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
 - Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
 - Para chequear tu la instalación correcta tipear -> go version 
+
+* Presentaciòn 
+
+http://bit.ly/2rCH9Af
 
 * ¿Donde programar?
 
