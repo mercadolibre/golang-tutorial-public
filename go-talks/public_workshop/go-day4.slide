@@ -1,0 +1,102 @@
+Golang workshop - Day 4
+
+Buenos Aires
+Junio 2017
+
+Gustavo Rodriguez
+Mariano Labariñas
+
+* WIFI
+
+Redes disponibles -> visitas y guess
+
+User: Meli
+Pass: Meli.2017
+
+* Caso de uso
+
+.image ../resources/caso_de_uso.png
+
+* ¿Qué es la api de locations?
+
+Servicios:
+
+- Geolocalización por IP
+- Información de las locaciones en las que trabaja MercadoLibre (países, estados, ciudades,etc)
+- ABM árboles de locaciones
+
+Tráfico: ~ 300K RPM (100% de lecturas, escrituras ocasionales)
+
+* Platform
+
+- Fury + Servicios
+
+.image ../resources/fury_plat.png
+
+* Migración Locations API 
+
+0) Arquitectura Original
+
+.image ../resources/loc_0.png
+
+* Migración Locations API 
+
+1) Agregamos Persistencia en Key Value, Golden Gate y Sincronizador KV/RDBS
+
+.image ../resources/loc_1.png
+
+* Migración Locations API 
+
+2) Redirigimos tráfico de VIR a versión de Golang y matamos pooles innecesarios
+
+.image ../resources/loc_2.png
+
+* Migración Locations API 
+
+3) Probamos gradualmente de sacar el Varnish con buen resultado
+
+.image ../resources/loc_3.png
+
+* Migración Locations API 
+
+4) Migramos KV y API a Multi DC y matamos ATL
+
+.image ../resources/loc_4.png
+
+* Migración Locations API 
+
+5) Matamos replica RDBS -> KV y dejamos KV -> RDBS como backup
+
+.image ../resources/loc_5.png
+
+* Migración Locations API 
+
+7)Matamos replica KV -> RDBS 
+
+.image ../resources/loc_6.png
+
+* Migración Locations API 
+
+Resúmen
+
+.image ../resources/loc_resumen.png
+
+* Migración Locations API 
+
+Ahorros en hardware
+
+.image ../resources/locations_hardware.png
+
+* Migración Locations API 
+
+.image ../resources/locations_metrics.png
+
+* Como seguir?
+
+- [[https://tour.golang.org][Tour Go]]
+- [[https://golang.org/doc/effective_go.html][Effective Go]]
+- [[https://gobyexample.com][Go By Example]]
+- [[https://golang.org/doc/code.html][How to Write Go Code]]
+- [[http://www.golangpatterns.info][Go Design Patterns]]
+- [[https://golang.org/pkg][Standar Library]]
+- [[https://github.com/golang/go/wiki][Awesome Go]]
