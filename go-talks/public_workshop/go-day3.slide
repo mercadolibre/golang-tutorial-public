@@ -1,7 +1,7 @@
 Golang workshop - Day 3
 
 Buenos Aires
-Junio 2017
+Octubre 2017
 
 Gustavo Rodriguez
 Mariano Labariñas
@@ -182,7 +182,7 @@ El comando “go test” corre los test del proyecto
 - [[https://github.com/onsi/ginkgo][Ginkgo]]
 - [[https://github.com/smartystreets/goconvey][GoConvey]]
 
-* 4º Ejercicio
+* 5º Ejercicio
 
 	Agregar un test, un benchmark y un example al ejercicio de suma de un valor parametrizado p 
 	entre 0 <= v <= p. 
@@ -303,7 +303,7 @@ El comando “go test” corre los test del proyecto
 
 .image ../resources/gingonic_snippets.png
 
-* 5º Ejercicio
+* 6º Ejercicio
 
 	Evolucionar el primer ejercicio del curso de forma tal que ahora se ejecute 
 	en un webserver que escuche en el puerto 8080 y sea invocado al llamar al servicio 

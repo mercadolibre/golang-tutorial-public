@@ -1,7 +1,7 @@
 Golang workshop - Day 1
 
 Buenos Aires
-Junio 2017
+Octubre 2017
 
 Gustavo Rodriguez
 Mariano Labariñas
@@ -15,15 +15,18 @@ Mariano Labariñas
 
 * WIFI
 
-Redes disponibles -> visitas y guess
+Redes disponibles -> guest
 
-User: Meli
-Pass: Meli.2017
+Pass: mercadolibre2017
+
+* Presentación 
+
+XXXX
 
 * Motivación
 
 - El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
-- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.8.x y los cambios en la API fueron mínimos.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.9.x y los cambios en la API fueron mínimos.
 - Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
 - Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
 - El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
@@ -106,10 +109,6 @@ CockroachDB (first stable relese)
 - Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
 - Para chequear tu la instalación correcta tipear -> go version 
 
-* Presentaciòn 
-
-http://bit.ly/2rCH9Af
-
 * ¿Donde programar?
 
 - [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
@@ -131,6 +130,10 @@ GOPATH
 
 - Unix: $HOME/go 
 - Windows: %USERPROFILE%/go
+
+* 1º Ejercicio
+
+Hacer el mitico -> "Hello world" en Golang.
 
 * Hello world!!
 
@@ -251,7 +254,7 @@ _using_range_
 
 .play ../resources/src/05_variables_type_convertion/main.go
 
-* 1º Ejercicio
+* 2º Ejercicio
 
 Hacer un programa que reciba un parámetro *p* por consola y que cacule la suma de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
 

@@ -1,17 +1,21 @@
 Golang workshop - Day 2
 
 Buenos Aires
-Junio 2017
+Octubre 2017
 
 Gustavo Rodriguez
 Mariano Labariñas
 
 * WIFI
 
-Redes disponibles -> visitas y guess
+Redes disponibles -> XXXX
 
-User: Meli
-Pass: Meli.2017
+User: XXXX
+Pass: XXXX
+
+* Presentación 
+
+XXXX
 
 * Punteros
 
@@ -110,7 +114,7 @@ Map Loop
 
 .play ../resources/src/09_collections/3/main.go
 
-* 2º Ejercicio (struct, punteros, slices)
+* 3º Ejercicio (struct, punteros, slices)
 
 Hacer un programa que reciba por parametro una lista de enteros, los almacene en un slice, popule un arbol binario y despues imprima los valores en orden ascendente
 
@@ -204,14 +208,10 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
     
 .play ../resources/src/15_composition/2/main.go /^func main/,/^}/
 
-* Ejercicio
+* 4º Ejercicio
 
 Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
 
 - Normales: Pagan el 100%
 - Jubilados: Tienen un 50% de descuento
 - Invitados: No pagan nada
-
-* Errors
-
-.play ../resources/src/12_errors/main.go
