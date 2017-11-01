@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// read only channel <-chan bool / write only channel chan<- bool
 func worker(done chan bool) {
 	fmt.Print("working...")
 
