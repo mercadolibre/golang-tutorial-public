@@ -1,0 +1,421 @@
+Building RESTful APIs with Golang
+
+Buenos Aires
+Noviembre 2017
+
+Gustavo Rodriguez
+Mariano Labariñas
+
+
+* ¿Quienes Somos?
+
+.image ../resources/gustavo_2.jpg _ _
+
+.image ../resources/mariano_2.jpg _ _
+
+* Para arrancar un poco de contexto...
+
+* REST
+
+.image ../resources/rest.png 500 500
+
+* Definición
+
+*REpresentational* *State* *Transfer* o REST es un estilo de arquitectura de desarrollo web que se apoya totalmente en el estándar HTTP y nos permite crear servicios y aplicaciones que pueden ser usadas por cualquier dispositivo o cliente que entienda HTTP.
+
+Fue definido en el 2000 por Roy Fielding.
+
+Está basado en un conjunto de características fundamentales:
+
+- Un protocolo cliente/servidor sin estado.
+- Una sintaxis universal para identificar los recursos a través de su URI.
+- Un conjunto de operaciones, métodos HTTP, bien definidas que se aplican a todos los recursos.
+- El uso de hipermedios, la capacidad de proporcionar al cliente los enlaces adecuados para ejecutar acciones concretas sobre los datos a través de los recursos.
+
+* Elementos básicos
+
+- Recursos: representan a los elementos de información o entidades sobre las que se puede interactuar en nuestra API. Se identifican de forma única a través de su URI. Las URIs no deben implicar acciones y deben ser únicas. Ejemplo:
+	
+	URL -> {protocolo}://{dominio}[:puerto]/{ruta del recurso (URI)}?{consulta de filtrado}
+
+- Métodos: representan las acciones que vamos a poder realizar sobre nuestros recursos. Ejemplos:
+
+	GET: Para consultar recursos.
+	POST: Para crear recursos.
+	PUT: Para editar recursos.
+	DELETE: Para eliminar recursos.
+
+- Códigos de estado: para cada acción sobre un recurso nos permiten saber si la operación se ha realizado con éxito o no.
+
+	200 -> OK
+	404 -> NOT_FOUND
+	400 -> BAD_REQUEST
+	500 -> INTERNAL_SERVER_ERROR
+
+* Elementos básicos
+
+- Tipos y formatos de contenido: HTTP nos permite especificar en qué formato queremos recibir el recurso, pudiendo indicar varios en orden de preferencia. Ejemplos:
+
+	text/plain
+	application/xml
+	application/json
+	application/pdf
+	image/jpeg
+
+* Golang
+
+.image ../resources/golang.png 400 300
+
+* Motivación
+
+- El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.9.x y los cambios en la API fueron mínimos.
+- Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
+- Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
+- El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
+
+* Objetivos
+
+- Que fuera simple para escribir (menos es más). 
+- Que fuera simple para leer (nos pasamos mucho tiempo leyendo código de otras personas).
+- Concurrente (multi-core, asincrónico, NIO).
+- Que compile rápido y a código nativo (soporta cross compilation)
+- Que tenga un memory footprint bajo.
+- Que fuera lo mas "autocontenido" posible.
+
+* Sweet spot
+
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
+
+* ¿Qué características hacen de Go un buen lenguaje para construir APIs REST?
+
+- Built in Web Server
+- Built in Testing framework
+- Goroutines (NIO)
+- Channels (comunicar goroutines / sincronizar concurrencia de forma simple)
+- Garbage Collection (GC)
+- Punteros
+- Funciones como parámetros / closures
+- Compilación rapida y a código nativo (soporte para cross compilation)
+- Bajo memory footprint
+
+* Dinámica del workshop
+
+*Slides*->* [[https://goo.gl/7OL3wm][https://goo.gl/7OL3wm]]
+
+*Ejemplos*->* [[https://goo.gl/R1hoSf][https://goo.gl/R1hoSf]]
+
+* Instalando GO!
+
+- Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
+- Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
+- Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
+- Para chequear tu la instalación correcta tipear -> go version 
+
+* ¿Donde programar?
+
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[https://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://www.jetbrains.com/go/][GoLand IDE by JetBrains]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
+
+* Go Basics: Workspace
+
+*GOPATH*
+	|_ BIN: Contiene los archivos ejecutables
+	|_ SRC: Contiene los fuentes organizados en paquetes
+	|_ PKG: Contiene los paquetes en formato binario
+
+*Default* *GOPATH* (go >1.8)
+
+- Unix: $HOME/go 
+- Windows: %USERPROFILE%/go
+
+
+* Building APIs in Go
+
+.image ../resources/gingonic.png 500 500
+
+
+* Basic ping in go
+
+	package main
+
+	import (
+		"fmt"
+		"net/http"
+	)
+
+	func handler(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "pong")
+	}
+
+	func main() {
+		http.HandleFunc("/ping", handler)
+		http.ListenAndServe(":8080", nil)
+	}
+
+* Varias opciones
+
+- [[http://beego.me/][*Beego*]]: Framework web -> Templates & ORM 
+- [[https://github.com/go-martini/martini][*Martini*]]: Framework web -> @deprecated
+- [[https://gin-gonic.github.io/gin/][*Gin-Gonic*]]: Framework web -> Basado en Martini 10x mas performante
+- [[https://goji.io/][*Goji*]]: Request Multiplexer
+- [[http://www.gorillatoolkit.org/][*Gorilla*]]: Web toolkit
+- [[https://github.com/julienschmidt/httprouter][*httprouter*]]: High performance router
+- [[https://golang.org/pkg/net/http][*net/http*]]: Libreria http estandar de go
+- ….
+
+* ¿Por qué Gin-Gonic?
+
+- Compatible con net/http
+- Usa httprouter (muy rápido)
+- Interface familiar y amigable
+- Trabaja bien con JSON
+- Más de 13000 estrellas en github
+- No reinventar la rueda
+- Había que elegir uno :)
+
+* Instalando gin-gonic
+
+	go get -u github.com/gin-gonic/gin
+
+* Ejemplo: Ping
+
+.play ../resources/src/18_gin_hello_world/main.go
+
+
+* Métodos http soportados
+
+	func main() {
+		// Creates a gin router with default middleware:
+		// logger and recovery (crash-free) middleware
+		router := gin.Default()
+		router.GET("/someGet", getting)
+		router.POST("/somePost", posting)
+		router.PUT("/somePut", putting)
+		router.DELETE("/someDelete", deleting)
+		router.PATCH("/somePatch", patching)
+		router.HEAD("/someHead", head)
+		router.OPTIONS("/someOptions", options)
+		// By default it serves on :8080 unless a
+		// PORT environment variable was defined.
+		router.Run() // router.Run(":3000") for a hard coded port
+	}
+
+
+* Params
+
+.play ../resources/src/19_gin_params/main.go
+
+* Parámetros en Querystring
+
+.play ../resources/src/20_gin_query_params/main.go
+
+* Agrupando paths
+
+	func main() {
+		router := gin.Default()
+		v1 := router.Group("/v1"){      // Simple group: v1
+			v1.POST("/login", loginEndpoint)
+			v1.POST("/submit", submitEndpoint)
+			v1.POST("/read", readEndpoint)
+		}
+		v2 := router.Group("/v2"){     // Simple group: v2
+			v2.POST("/login", loginEndpoint)
+			v2.POST("/submit", submitEndpoint)
+			v2.POST("/read", readEndpoint)
+		}
+		router.Run(":8080")
+	}
+
+* Middlewares
+
+	r := gin.Default()    equivale a 	   r := gin.New()
+											r.Use(gin.Logger())
+											r.Use(gin.Recovery())
+
+.image ../resources/gingonic_middlewares.png
+
+* Model Binding y validación
+
+.play ../resources/src/22_gin_model/main.go /START OMIT/,/END OMIT/
+
+* Ahora si a DIVERTIRNOS :P
+
+* ¿Que vamos a construir?
+
+Una API REST que le permita a nuestros compradores en Meli saber cuales son los vendedores proximos a su ubicación que disponen del producto que andan buscando.
+
+- http://api.mercadolibre.com/render?query=bmw
+
+.image ../resources/workshop.png 400 700
+
+* Y para ello vamos a necesitar...
+
+* 
+
+- Validar los inputs de nuestra API
+
+- Consumir la API de search: que nos permite saber para un criterio de búsqueda dado los ítems que matchean con el mismo
+	https://api.mercadolibre.com/sites/MLA/search?q=QUERY
+
+
+- Consumir la API de items: que nos brinda información detallada del ítem solicitado
+	https://api.mercadolibre.com/items/MLA400000000
+
+
+- Filtrar los resultados y quedarnos con aquellos ítems que tengan stock disponible
+
+- Entregar una respuesta en formato JSON de los vendedores próximos
+
+- Integrarse con google maps para mostrar ubicaciones de los ítems
+
+* Manos a la obra...
+
+* Paso 1 del ejercicio
+
+- Bajarse el repo base
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_0
+
+- Ejecutarlo!
+	
+	cd $GOPATH/src/github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_0
+	go run *.go
+
+- Agregar nuestro primer servicio, el siempre y bien ponderado -> /ping que devuelva un string "pong" cuando se lo llame via GET
+
+	$localhost:8080/ping
+	$pong
+
+* Paso 2 del ejercicio
+
+- Si lograste el primer paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 2
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_1
+
+- Agregar el servicio /items que se lo llame via GET e imprima el querystring 'query' que se pasa por parámetro. En caso de no enviarse el querystring debe mostrar un mensaje de error
+
+	$localhost:8080/items?query=bmw
+	$bmw
+	$localhost:8080/items
+	$'query' param should be send
+
+
+* Paso 3 del ejercicio
+
+- Si lograste el segundo paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 3
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_2
+
+- Vamos a hacer que las respuestas de nuestra API dejen de ser simples string y pasen a ser json, que elegancia!
+
+	$localhost:8080/items?query=bmw
+	${"query":"bmw"}
+	$localhost:8080/items
+	${"message":"'query' param should be send","status":400}
+
+* Algo de intro para el paso 4...
+
+* Http calls
+
+- API nativa de Go
+
+	resp, err := http.Get("https://api.mercadolibre.com/sites/MLA/search?q=bmw&offset=0")
+	if err != nil {
+		// handle error
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	//check status and decode body
+
+- Meli Restclient
+	
+[[https://github.com/mercadolibre/golang-restclient][https://github.com/mercadolibre/golang-restclient]] -> [[https://opensource.mercadolibre.com][+ Meli OSS]]
+
+	resp := rest.Get("https://api.mercadolibre.com/sites/MLA/search?q=bmw&offset=0")
+	if resp.Response != nil && resp.Response.StatusCode == http.StatusOK {
+		//decode body	
+	}
+
+* JSON decode
+
+	type SearchResult struct {
+		Paging PageInfo     `json:"paging"`
+		Results []SeachItem `json:"results"`
+	}
+
+	type PageInfo struct {
+		Total int `json:"total"`
+		Offset int `json:"offset"`
+		Limit int `json:"limit"`
+	}
+
+	type SeachItem struct {
+		Id string `json:"id"`
+	}
+
+	resp := rest.Get(fmt.Sprintf("https://api.mercadolibre.com/sites/MLA/search?q=%s&offset=%v", query,offset))
+	if resp.Response != nil && resp.Response.StatusCode == http.StatusOK {
+		var searchResult SearchResult
+		err=json.Unmarshal(resp.Bytes(), &searchResult)
+		if err!=nil {	
+			//handle error
+		}
+		...
+	}
+
+* Paso 4 del ejercicio
+
+- Si lograste el tercer paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 4
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_3
+
+- Llamar a la API de search buscando ítems que cumplan con la query especificada
+
+	https://api.mercadolibre.com/sites/MLA/search?q=##query##&offset=##offset##
+
+- Iterar las páginas hasta obtener un máximo de 100 item ids
+- Imprimir lista de ids como respuesta JSON del servicio
+
+	$localhost:8080/items?query=bmw
+	$[{"id":"MLA691380141"},{"id":"MLA693682077"},{"id":"MLA692195170"}...]
+
+* Paso 5 del ejercicio
+
+- Si lograste el cuarto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 5
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_4
+
+- Llamar a API de items para completar título, precio y ubicación (lat,long) de cada ítem obtenido en el paso 4
+
+	https://api.mercadolibre.com/items/MLA691380141
+
+	$localhost:8080/items?query=bmw
+	$[{"id":"MLA691380141","title":"Bmw Serie 1","price":200000,
+		"seller_address":{"latitude":-34.633537,"longitude":-58.579502}}, ...]
+
+* Paso 6 del ejercicio
+
+- Si lograste el quinto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 6
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_5
+
+- Llamar a la api de items pero concurrentemente :)
+	
+	$localhost:8080/items?query=bmw
+	$[{"id":"MLA691380141","title":"Bmw Serie 1","price":200000,
+		"seller_address":{"latitude":-34.633537,"longitude":-58.579502}}, ...]
+
+* Paso 7 del ejercicio
+
+- Si lograste el sexto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 7
+
+	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_6
+
+- Integrarse con google maps para mostrar ubicaciones de los ítems
