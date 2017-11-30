@@ -281,7 +281,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Bajarse el repo base
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_0
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_0
 
 - Ejecutarlo!
 	
@@ -297,7 +297,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el primer paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 2
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_1
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_1
 
 - Agregar el servicio /items que se lo llame via GET e imprima el querystring 'query' que se pasa por parámetro. En caso de no enviarse el querystring debe mostrar un mensaje de error
 
@@ -311,7 +311,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el segundo paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 3
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_2
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_2
 
 - Vamos a hacer que las respuestas de nuestra API dejen de ser simples string y pasen a ser json, que elegancia!
 
@@ -374,7 +374,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el tercer paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 4
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_3
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_3
 
 - Llamar a la API de search buscando ítems que cumplan con la query especificada
 
@@ -390,7 +390,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el cuarto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 5
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_4
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_4
 
 - Llamar a API de items para completar título, precio y ubicación (lat,long) de cada ítem obtenido en el paso 4
 
@@ -404,7 +404,7 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el quinto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 6
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_5
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_5
 
 - Llamar a la api de items pero concurrentemente :)
 	
@@ -416,6 +416,6 @@ Una API REST que le permita a nuestros compradores en Meli saber cuales son los 
 
 - Si lograste el sexto paso GENIAL! Sigamos evolucionando ese, sino don't worry podes seguirnos a partir de esta base para el paso 7
 
-	go get github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_6
+	go get -v github.com/mercadolibre/golang-tutorial-public/go-talks/fullstack-2017/workshop/step_6
 
 - Integrarse con google maps para mostrar ubicaciones de los ítems
