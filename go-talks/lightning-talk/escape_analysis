@@ -1,0 +1,5 @@
+go build -gcflags "-m -m"
+
+./heap1.go:6:9: &i escapes to heap
+./heap1.go:6:9: 	from ~r0 (return) at ./heap1.go:6:2
+./heap1.go:5:2: moved to heap: i

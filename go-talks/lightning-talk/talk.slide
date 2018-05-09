@@ -1,0 +1,158 @@
+Golang Meetup
+Mecánicas de lenguaje: Manejo de memoria
+
+Buenos Aires
+8 May 2018
+Ezequiel Maidanik
+
+
+* Introducción
+
+.image ../resources/eze.png _ _
+
+* Semántica del lenguaje
+
+- Cómputos involucrados en la ejecucion un programa que compila
+
+Importancia:
+
+- Nos ayuda a escribir programas libres de errores
+- Nos permite mejorar la performance de nuestros programas
+
+* Semántica del lenguaje
+
+.play evil_setter1.go /START OMIT/,/END OMIT/
+
+* Semántica del lenguaje
+
+.play evil_setter2.go /START OMIT/,/END OMIT/
+
+* Gorutinas
+
+- Los programas en go corren en el contexto de una gorutina.
+- Cada gorutina tiene asociado su propio stack, con un tamaño inicial de 2048 bytes Que puede crecer o achicarse dependiendo de los requerimientos de memoria del programa.
+- Cada vez que cambia de tamaño el stack. Se debe copiar completamente el stack viejo.
+
+* Frame Boundaries
+
+- Las funciones se ejecutan en el scope de un frame boundary, que proveen espacio de memoria individual para cada función.
+- Las funciones tienen acceso directo a la memoria dentro de su frame.
+- El acceso a memoria fuera del frame requiere acceso indirecto. Para que una función acceda a memoria fuera de su frame. Esta memoria tiene que ser "compartida" con ella
+- Cuando se llama una función, se lleva a cabo una transición entre el frame de la función llamadora y la que es llamada.
+- Los parámetros usados para llamar a una función siempre se pasan por copia.
+
+* Stack
+
+.play ejemplo_stack.go
+
+* Stack
+
+.image ../resources/Stack.png _ _
+
+* Frame Boundaries
+
+.play stack_frame.go
+
+* Frame Boundaries
+
+.code stack_frame.go /Code 1 START OMIT/,/Code 1 END OMIT/
+.image ../resources/stack_frame_1.png _ _
+
+* Frame Boundaries
+
+.code stack_frame.go /Code 2 START OMIT/,/Code 2 END OMIT/
+.image ../resources/stack_frame_2.png _ _
+
+* Frame Boundaries
+
+.code stack_frame.go /Code 3 START OMIT/,/Code 3 END OMIT/
+.image ../resources/stack_frame_3.png _ _
+
+* Frame Boundaries
+.code stack_frame.go /Code 4 START OMIT/,/Code 4 END OMIT/
+.image ../resources/stack_frame_4.png _ _
+
+* Punteros
+- Si es necesario operar directamente sobre la memoria de el frame de otra función, esta tiene que ser compartida mediante un puntero.
+- Todos los tipos declarados por el usuario o por el lenguaje tienen implícitamente un puntero complementario.
+- Todos los punteros tienen el mismo tamaño de memoria y representación.
+
+* Frame Boundaries
+
+.play stack_frame2.go
+
+* Frame Boundaries
+
+.code stack_frame2.go /Code 5 START OMIT/,/Code 5 END OMIT/
+.image ../resources/stack_frame_5.png _ _
+
+* Frame Boundaries
+.code stack_frame2.go /Code 6 START OMIT/,/Code 6 END OMIT/
+.image ../resources/stack_frame_6.png _ _
+
+* Heap
+
+- El heap es un área de almacenamiento secundaria para almacenar valores.
+- La memoria del heap, a diferencia del stack, no se limpia sola.
+- Esta memoria tiene un costo de uso asociado más alto que el stack.
+- Todas las variables que no se pueden almacenar en el stack tienen que ir al heap. Esto se determina en tiempo de compilación mediante el "escape analysis"
+
+* Escape analysis
+
+.code heap1.go
+.code escape_analysis
+
+* Escape analysis
+
+- Cuando se comparte hacia arriba en el stack
+- Cuando se comparte una posición de memoria con otra gorutina
+- Cuando se hace una asignación a un valor de tipo interfaz
+- Cuando no se conoce el tamaño de la variable en tiempo de compilación
+
+* Filosofía de diseño
+
+Un uso consistente de semántica de valor/puntero para todo tipo de dato es importante si se busca mantener la integridad y legibilidad en los programas. Porque si se cambia la semántica usada para un tipo de dato mientras la pasas entre las funciones hace muy difícil mantener un modelo mental claro y consistente del código.
+
+"Los peores bugs son aquellos en los que tu modelo mental de la situación está mal, entonces no podes ver cual es el problema" - Brian Kernighan
+
+* Tipos del lenguaje
+
+Built-in types
+- Usan semántica de valor
+- No se deberían usar punteros para compartir estos valores en lo posible.
+
+Tipos de referencia:
+- Tipos propios del lenguaje que encapsulan un puntero
+- Slices, maps, chanels, functions, interfaces
+- No se deberían usar punteros para compartir estos valores en lo posible
+
+* Semántica de valor
+
+.code time.go
+
+* Semántica de Puntero
+
+.code file.go
+
+* Filosofía de diseño
+
+"La semántica de valor mantiene los valores en el stack, lo que reduce la presión en el Garbage Collector. Sin embargo, la semántica de valores requiere que se almacenen y mantengan varias copias de todo valor almacenado. La semántica de punteros posiciona los valores en el heap, que puede poner presión en el GC. Pero la semántica de punteros es eficiente porque un solo valor tiene que ser almacenado y mantenido" - Bill Kennedy
+
+* Semántica del lenguaje
+.code evil_setter1.go
+
+* Semántica del lenguaje
+.play not_so_evil_setter1.go /START OMIT/,/END OMIT/
+
+* Semántica del lenguaje
+.play not_so_evil_setter2.go /START OMIT/,/END OMIT/
+
+* Links
+
+- [[https://www.goinggo.net/2017/05/language-mechanics-on-stacks-and-pointers.html][Language Mechanics On Stacks And Pointers]]
+- [[https://www.goinggo.net/2017/05/language-mechanics-on-escape-analysis.html][Language Mechanics On Escape Analysis]]
+- [[https://www.goinggo.net/2017/06/language-mechanics-on-memory-profiling.html][Language Mechanics On Memory Profiling]]
+- [[https://www.goinggo.net/2017/06/design-philosophy-on-data-and-semantics.html][Design Philosophy On Data And Semantics]]
+- [[https://https://www.ardanlabs.com/blog/2017/06/for-range-semantics.html][For Range Semantics]]
+
+
