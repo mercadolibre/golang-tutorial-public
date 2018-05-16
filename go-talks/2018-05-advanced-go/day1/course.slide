@@ -1,0 +1,342 @@
+Advanced Go
+Day 1 - Buenos Aires, Argentina
+15 May 2018
+Tags: golang, apis, http
+
+Eduardo Acosta Miguens
+eduardo.miguens@mercadolibre.com
+
+Fernando Russ
+fernando.russ@mercadolibre.com
+
+* Mini tour de Go
+
+.code example/example1.go /START 1/,/END 1/
+
+* Language Mechanics
+
+* Embedding, not Inheritance
+
+.code example/embedding.go /START 1/,/END 1/
+
+su inicializacion,
+
+.code example/embedding.go /START 2/,/END 2/
+
+y el override de una función,
+.code example/embedding.go /START 3/,/END 3/
+
+* Interfaces
+
+ type Reader interface {
+     Read(p []bytes) (n int, err error)
+ }
+
+Lo cumple implicitamente cualquier función de la forma:
+
+ func (d *algo) Read(p []bytes) (n int, err error)
+
+además, es posible definir una interfaz por composicion:
+
+ type ReadWriteCloser interface {
+     io.Reader
+     io.Writer
+     io.Closer
+ }
+
+y cumple con las tres interfaces puntuales
+
+ func (d *algo) Read(p []bytes) (n int, err error)   // Reader 
+ func (d *algo) Write(p []bytes) (n int, err error)  // Writer
+ func (d *algo) Close() error                        // Closer
+
+* Error handling
+
+Si tenemos esta funcion:
+
+ func doSomething() (int64, error)
+
+Manejamos el error cuando la llamamos de esta manera:
+
+ value, err := doSomething();
+ if err != nil {
+     return fmt.Errorf("could not do something: %v", err)
+ }
+
+Esto es un antipattern... (pero se utiliza)
+
+ if err := doSomething(); err != nil {
+    panic(err)
+ }
+
+
+* Error handling: error values
+
+definamos unos errores custom:
+.code example/errs.go /START 1/,/END 1/
+
+el uso de esos errores:
+.code example/errs.go /START 2/,/END 2/
+
+entonces el error checking sería:
+.code example/errs.go /START 3/,/END 3/
+
+
+* Error handling: error type 
+
+definamos unos errores custom:
+.code example/errs.go /START 4/,/END 4/
+y cumple la interface error,
+.code example/errs.go /START 5/,/END 5/
+y entonces:
+.code example/errs.go /START 6/,/END 6/
+
+* Error handling: panic
+TODO: Codigo (panic, recover)
+
+.code example/errs.go /START 7/,/END 7/ HLxxx
+
+No son exceptions!!!
+
+* Paralelismo vs Concurrencia
+
+.image img/concurrency_parallelism.png              
+
+Una excelente charla!
+
+Rob Pike (Co-Creador de Go)
+.link https://blog.golang.org/concurrency-is-not-parallelism
+
+* Goroutines
+
+ go <callable>
+
+puede ser algo como:
+
+ go SlowProcessing()
+
+otro pattern es utilizando closures,
+
+.code example/goroutines.go /START 1/,/END 1/
+
+* Goroutines (cont.)
+
+- *NO!*  son threads.
+- Hay un scheduler por cada runtime de Go.
+- Son cooperativas (yield).
+ runtime.Gosched() // <- buuu
+- En general todo el IO en Golang es async.
+
+
+* Parallelism/Concurrency patterns
+
+* Single Producer / Multiple Consumers
+
+.code example/patterns.go /START 1/,/END 1/ HLxxx
+
+* Multiple Producer / Single Consumers
+ 
+.code example/patterns.go /START 2/,/END 2/ HLxxx
+
+💩 Esto *nunca* termina. Por que ?
+
+* Vamos a un break
+.image img/break.png
+
+* Multiple Producer / Single Consumers (fixed)
+.code example/patterns.go /START 3/,/END 3/ HLxxx
+
+* Race condition
+
+.code example/race_test.go /START 1/,/END 1/
+
+* Race condition (cont.)
+
+.code example/race_test.go /START 1/,/END 1/ HLxxx
+
+* Go synchronization primitives
+
+* Mutex
+Fixeado con un mutex
+.code example/sync_primitives_test.go /START 1/,/END 1/ HLxxx
+
+* Mutex (como pattern)
+Supongamos esta struct de fantasia (claramente no es concurrent-safe),
+.code example/sync_primitives_test.go /START 2/,/END 2/ HLxxx
+
+Componemos con sync.Mutex, 
+.code example/sync_primitives_test.go /START 3/,/END 3/ HLxxx
+
+Ahora, Stats es lockable
+.code example/sync_primitives_test.go /START 4/,/END 4/ HLxxx
+
+* Atomic
+Fixeado con atomics
+.code example/sync_primitives_test.go /START 5/,/END 5/ HLxxx
+
+* Channels
+
+Y con channels? como prodíamos implementarlo?
+
+* Channels (fixed de una forma)
+.code example/sync_primitives_test.go /START 6/,/END 6/ HLxxx
+
+* Channels (algunos detalles)
+
+- Estan escritos en Go ❤️
+.link https://github.com/golang/go/blob/master/src/runtime/chan.go
+
+- Son queues *MultipleProducer/MultipleConsumer*
+- Pueden ser *buffered*/*unbuffered*
+
+ unbuffered := make(chan int) // unbuffered
+ buffered := make(chan int, bufferSize) // buffered
+
+
+Genera *panic()* cuando:
+
+- Hay un write en un channel cerrado
+- Se hace close más de una vez
+
+Material adicional:
+.link https://www.ardanlabs.com/blog/2017/10/the-behavior-of-channels.html
+
+
+* Channels (cont.)
+
+Escritura no bloqueante:
+.code example/channels_test.go /START 1/,/END 1/ HLxxx
+ 
+Lectura no bloqueante:
+.code example/channels_test.go /START 2/,/END 2/ HLxxx
+
+
+* Synchronization Patterns (some...)
+
+* WaitGroups    
+
+Count latch para esperar sincronizado por una cantidad de trabajos realizados.
+
+.code example/sync_primitives_test.go /START 7/,/END 7/ HLxxx
+
+Permite implementar *fork&join* muy facilmente.
+
+.link https://golang.org/pkg/sync/#WaitGroup
+
+* errgroup
+
+Count latch con finalizacion temprana por error.
+
+.code example/sync_primitives_test.go /START 8/,/END 8/ HLxxx
+
+Permite implementar *fork&join* mientras ninguna tarea de error (*fail* *fast*)
+
+.link https://godoc.org/golang.org/x/sync/errgroup
+
+* context.Context
+
+ "Package context defines the Context type, which carries deadlines, 
+ cancelation signals, and other request-scoped values across API 
+ boundaries and between processes."
+
+
+* context.Context: values
+
+Es posible utilizaro para transportar información de contexto,
+.code example/context_test.go /START 3/,/END 3/ HLxxx
+ 
+* context.Context: cancellation
+
+Como cancelar un contexto,
+
+.code example/context_test.go /START 1/,/END 1/ HLxxx
+
+* context.Context: deadlines
+Para especificar un tiempo máximo de ejecución,
+.code example/context_test.go /START 2/,/END 2/ HLxxx
+
+
+* Workshop (objetivos)
+
+* Construir un Download Manager
+
+- Descargar file via HTTP de forma segmentada
+- Continuar una descarga interrumpida
+- Descargar el mismo file de multiples fuentes
+
+* Downloads por HTTP
+
+* std net/http
+ import "net/http"
+
+La libreria standard de Go para HTTP es extremadamente buena. ️️️️️️❤️
+
+.link https://godoc.org/net/http/
+
+Ejemplo muy básico:
+
+    res, err := http.Get("http://example.com/")
+    if err != nil {
+        // handle error
+    }
+    // res.Body implementa io.ReadCloser
+    defer res.Body.Close()
+    body, err := ioutil.ReadAll(res.Body)
+    // ...
+
+* Descargas parciales por HTTP
+
+Un server que soporta rangos, envia un header *Accept-Ranges*,
+
+ Accept-Ranges: bytes
+
+Se utiliza el header *Range*,
+
+ Range: bytes=100-2534
+
+Si el server acepta el request retorna,
+
+ 206 Partial Content
+
+y un header *Content-Range*,
+
+ Content-Range: bytes 100-2534/112233
+
+* std io
+ import "io"
+
+La libreria de IO de Go  ️️️️️️❤️
+
+.link https://godoc.org/io/
+
+- Interfaz para manejar streams de lectura y escrituras
+- Varios patterns/suites para facilitar el uso
+
+Por ejemplo, copiar de un Reader a un Writer
+ 
+ n, err := io.Copy(dst, src)
+
+Abrir un file:
+ 
+ os.OpenFile(...) (*os.File, error)
+
+os.File implementa io.Reader e io.Writer
+
+* Machete
+
+ // Usando el http.DefaultClient
+ http.Get(...)
+
+ // O usamos un cliente custom 
+ client := http.Client{}
+
+ req, err := http.NewRequest(...)
+ req.Headers.Add(...) // nos permite agregar headers a la request
+ 
+ res, err := client.Do(req)
+
+ // Abrir un file en disco
+ os.OpenFile(...)
+
+ // Copiar de un io.Reader a un io.Writer
+ io.Copy(...)
