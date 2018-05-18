@@ -1,0 +1,175 @@
+Advanced Go
+Day 2 - Buenos Aires, Argentina
+17 May 2018
+Tags: golang, apis, http
+
+Eduardo Acosta Miguens
+eduardo.miguens@mercadolibre.com
+
+Fernando Russ
+fernando.russ@mercadolibre.com
+
+* Testing APIs / Idioms 
+
+ import "testing"
+
+Golang tiene cierto soporte de test en la standard library,
+
+Todas las funciones de un archivo con sufijo *_test.go* y que tengan la firma:
+
+ func Test___(t *testing.T)
+
+Se consideran tests, se buildean y ejecutan solo con:
+
+ go test . // ejecuta todos los tests del package actual
+
+Si queremos ejecutar varios paquetes podemos hacer:
+
+ go test ./... // ejecuta recursivamente el directorio actual y los subdirectorios
+
+* Testing APIs / Idioms (cont.)
+
+- Los tests corren muuuy rapido. ️️️❤️
+- *No* es facil hacer mocks auto-mágicos. 😢
+- Hay que codear pensando en testing. *(testiability)*
+
+* Tipos de Test
+
+Podemos hacer tests de tipo caja negra o caja blanca.
+
+ package car
+
+ func speed() int { return 2 }
+ func Wheels() int { return 4 }
+
+Dado ese paquete, podemos tener varios archivos *_test.go*
+
+ package car_test
+ func TestWheels(t *testing.T) {
+     if w := car.Wheels(); w != 4 { t.Fatalf("expected 4 wheels, got %d", w) }
+ }
+
+O para testear metodos privados
+
+ package car
+ func TestSpeed(t *testing.T) {
+     if s := car.speed(); s != 2 { t.Fatalf("expected speed to be 2, got %d", s) }
+ }
+
+* Costumbres
+
+- Los tests de un paquete se encuentran en el mismo paquete. 
+- No es idiomatico tener una carpeta que se llame "tests" y tenerlos ahi dentro.
+- Si el archivo se llama *enumerator.go* lo normal es tener un test *enumerator_test.go*
+- Lo normal es hacer uso de test tables para armar varios casos de prueba
+
+* Setup/Teardown
+
+No es necesario, pero en caso de desearlo puede agregarse el siguiente metodo para hacer setup o teardown de los tests de un paquete
+
+ func TestMain(m *testing.M) {
+     // setup()
+     code := m.Run() 
+     // teardown()
+
+     os.Exit(code)
+ }
+
+* Test Tables
+
+Es un pattern que se ve por toda la standard library.
+
+ func TestSomething(t *testing.T) {
+     tt := []struct {
+         Name string
+     }{
+         {Name:"Caso 1"},
+         {Name:"Caso 2"},
+     }
+     for _, tc := range tt {
+         t.Run(tc.Name, func(t *testing.T){
+            // ...
+         })
+     }
+ }
+
+En este caso *t.Run* genera un subtest para llamado "TestSomething/Caso_1"
+
+* Assertions
+
+El framework de testing nativo no tiene assertions, recomienda usar if => t.Fatal.
+
+Nosotros recomendamos la siguiente lib github.com/stretchr/testify para reducir boilerplate
+
+ if got != expected {
+     t.Fatalf("expected %d, got %d", expected, got)
+ }
+
+VS
+
+ require.Equal(t, expected, got)
+
+* Mocks
+
+Vamos a ver un caso concreto...
+
+* Mocks HTTP
+
+Vamos a usar una lib
+
+.link https://github.com/jarcoal/httpmock
+
+La libreria modifica el http.DefaultClient, y permite rootear los calls para responder con la info mockeada
+
+* Parametros adicionales
+
+- -run ^TestName$: Corre todos los tests que matchean con el regex.
+- -race: Corre los tests tratando de detectar race conditions.
+- -cover: Corre los tests y te muestra el code coverage de cada package.
+
+*Examples:*
+
+Los examples son tests que funcionan como ejemplo de como funciona nuestra lib. Si usamos `godoc` para generar documentación, entonces estos métodos aparecen como ejemplos en la documentación.
+
+* Benchmarks / Profiling
+
+ import "testing"
+
+Golang tiene benchmarking nativo por sampling, sigue la regla de los test, pero
+
+ func Benchmark___(*testing.b)
+
+y un número de iteraciones que se debe ejecutar,
+
+ func BenchmarkHeavy(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        DoSomeTask()
+    }
+ }
+
+*Es*clave* realizar benchmarks antes de cualquier refactor por performance.❗
+
+* Vamos a un break
+.image ../day1/img/break.png
+
+* Workshop
+
+* Algunas ideas
+
+- Como escribimos al file en paralelo?
+- Vamos a componentizar nuestro código.
+- Como medimos/mostramos progreso?
+- Agregamos tests! https://github.com/jarcoal/httpmock
+- Convertir nuestro código en una lib.
+
+*Hints*
+
+- Separation of duties ➡️ Interfaces
+- Coupling & Composability ➡️  Idiomatic design
+
+* Tarea
+
+- Convertir nuestro código en una lib (pensando en un server multi downloads)
+- Agregar tests!
+- Como manejamos la metadata? Que hacemos si se muere una request?
+- Soporte para multiples protocolos ademas de HTTP
