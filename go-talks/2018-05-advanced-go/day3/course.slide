@@ -1,0 +1,98 @@
+Advanced Go
+Day 3 - Buenos Aires, Argentina
+22 May 2018
+Tags: golang, apis, http
+
+Eduardo Acosta Miguens
+eduardo.miguens@mercadolibre.com
+
+Fernando Russ
+fernando.russ@mercadolibre.com
+
+* Diseño de una lib
+
+- Pensar en interfaces (tienen que ser abstractas y future-proof)
+- Separation of Concerns
+- Testability
+- ...
+
+* Plugins en Go 
+ import "plugin"
+
+- Permite cargar código compilado en runtime
+- Es un mecanismo relativamente nuevo (Go 1.8)
+
+un plugin:
+.code example/plugin/plugin.go /START 1/,/END 1/ HLxxx
+
+para compilarlo:
+
+ go build -buildmode=plugin -o plugin.so plugin.go
+
+* Plugins en Go (cont.)
+
+se utiliza de la siguiente forma:
+.code example/plugin/main.go /START 1/,/END 1/ HLxxx
+
+* Vamos a un break (por favor 🙏)
+.image ../day1/img/break.png
+
+* Diseño de un servicio
+
+La idea era que el web server tenga los siguientes metodos:
+- GET /downloads: lista todos los downloads activos o terminados, junto con su progreso.
+- GET /downloads/{id}: lista un download particular, 404 si no existe.
+- POST /downloads: manda un JSON un url a descargar y de a cuantas partes (opcionalmente donde bajarlo?)
+- DELETE /downloads/{id}: cancela una descarga en progreso o elimina una descarga terminada
+
+* Serializacion
+
+* JSON
+
+- Formato textual
+- Interoperable
+- Documentación: godoc.org/encoding/json
+
+.code example/serialize_json_test.go /START 1/,/END 1/ HLxxx
+
+* gob
+
+ import "encoding/gob"
+ 
+- Formato binario
+- *no* interoperable (de forma feliz)
+- es nativo de Go
+
+.code example/serialize_gob_test.go /START 1/,/END 1/ HLxxx
+
+* MsgPack
+
+ go get github.com/vmihailenco/msgpack
+
+- Formato binary (rapido y eficiente)
+- interoperable
+
+.code example/serialize_msgpack_test.go /START 1/,/END 1/ HLxxx
+
+* Protobuf3
+
+ https://developers.google.com/protocol-buffers/
+
+- Formato binary / textual (en general para debug)
+- Interoperable
+- Usa un generador de código
+
+.code example/serialize_protobuf3_test.go /START 1/,/END 1/ HLxxx
+
+* Transportes / RPCs
+
+* REST (json+http)
+ 
+.image ../day1/img/gopher.jpg
+
+* gRPC
+- Protobuf3 + HTTP/2 + ️️❤️
+
+ https://developers.google.com/protocol-buffers/
+
+.image ../day1/img/grpc.png
