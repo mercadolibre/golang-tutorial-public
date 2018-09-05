@@ -9,13 +9,13 @@ Federico Roasio
 
 * ¿Quiénes somos?
 
-.image resources/ale.jpg 110 _
+.image ../../resources/ale.jpg 110 _
 .caption [[mailto:alejandro.perez@mercadolibre.com][Alejandro Perez Albiero]] _Technical_ _Leader_
 
-.image resources/eric.jpg 110 _
+.image ../../resources/eric.jpg 110 _
 .caption [[mailto:eric.kohan@mercadolibre.com][Eric Kohan]] _Project_ _Leader_
 
-.image resources/fede_2.jpg 110 _
+.image ../../resources/fede_2.jpg 110 _
 .caption [[mailto:federico.roasio@mercadolibre.com][Federico Roasio]] _Project_ _Leader_
 
 
@@ -75,7 +75,7 @@ Necesidad de un lenguaje
 
 * Motivación: ¿por qué?
 
-.image resources/compiling.png 500 _
+.image ../../resources/compiling.png 500 _
 
 .link https://xkcd.com/303/
 
@@ -118,23 +118,23 @@ Necesidad de un lenguaje
 
 Docker
 
-.image resources/docker.png _ _
+.image ../../resources/docker.png _ _
 
 * ¿Proyectos hechos en GO?
 
 Kubernetes
 
-.image resources/kubernetes.png _ _
+.image ../../resources/kubernetes.png _ _
 
 * ¿Proyectos hechos en GO?
 
 CockroachDB (first stable relese)
 
-.image resources/cockroach.png _ _
+.image ../../resources/cockroach.png _ _
 
 * ¿Proyectos hechos en GO?
 
-.image resources/dropbox.jpg _ _
+.image ../../resources/dropbox.jpg _ _
 
 * ¿Paradigma?
 
@@ -202,7 +202,7 @@ Hacer el mítico -> "Hello world" en Golang.
 
 * Hello world!!
 
-.play -edit resources/src/00_hello_world/main.go
+.play -edit ../../resources/src/00_hello_world/main.go
 
 Comandos básicos desde consola
 
@@ -223,7 +223,7 @@ Comandos básicos desde consola
 - No pueden ser usados como identificadores
 - Go apunta a ser simple y tener pocos keywords
 
-.image resources/keywords.png _ _
+.image ../../resources/keywords.png _ _
 
 
 * Comentarios
@@ -268,12 +268,12 @@ Comandos básicos desde consola
 
 *0* para numéricos - *false* para booleanos - *""* para strings
 
-.play -edit resources/src/01_zero_values/main.go
+.play -edit ../../resources/src/01_zero_values/main.go
 
 * Paquetes
 
-.code -edit resources/src/04_packages/math/math.go
-.play -edit resources/src/04_packages/main.go
+.code -edit ../../resources/src/04_packages/math/math.go
+.play -edit ../../resources/src/04_packages/main.go
 
 * Tipos de if
 
@@ -287,39 +287,39 @@ Comandos básicos desde consola
 
 _for_initialization;_condition;_post_{_}_
 
-.play -edit resources/src/02_iterations/0/main.go
+.play -edit ../../resources/src/02_iterations/0/main.go
 
 * Iteraciones #2
 
 _for_condition_{_}_
 
-.play -edit resources/src/02_iterations/1/main.go
+.play -edit ../../resources/src/02_iterations/1/main.go
 
 * Iteraciones #3
 
 _for_{_}_
 
-.play -edit resources/src/02_iterations/2/main.go
+.play -edit ../../resources/src/02_iterations/2/main.go
 
 * Iteraciones #4
 
 _using_range_
 
-.play -edit resources/src/02_iterations/3/main.go
+.play -edit ../../resources/src/02_iterations/3/main.go
 
 * Switch
 
-.play -edit resources/src/02_iterations/4/main.go
+.play -edit ../../resources/src/02_iterations/4/main.go
 
 * Funciones
 
-.play -edit resources/src/03_functions/main.go
+.play -edit ../../resources/src/03_functions/main.go
 
 .link https://blog.golang.org/gos-declaration-syntax Go's Declaration Syntax
 
 * Conversión de variables
 
-.play -edit resources/src/05_variables_type_convertion/main.go
+.play -edit ../../resources/src/05_variables_type_convertion/main.go
 
 * 2º Ejercicio
 
@@ -335,13 +335,13 @@ Hacer un programa que reciba un parámetro *p* por consola y que calcule la suma
 
 - Fact 1: es útil llegar temprano.
 
-.image resources/technology_adoption.png 500 _
+.image ../../resources/technology_adoption.png 500 _
 
 * Por qué está bueno estudiar Golang hoy?
 
 - Fact 2: Go es muy joven y crece muy rápido -> somos early adopters!
 
-.image resources/programming_language_trends.png 400 _
+.image ../../resources/programming_language_trends.png 400 _
 
 .link https://www.benfrederickson.com/ranking-programming-languages-by-github-users/ Ranking Programming Languages by GitHub Users
 
@@ -349,6 +349,6 @@ Hacer un programa que reciba un parámetro *p* por consola y que calcule la suma
 
 - Y a la gente parece gustarle:
 
-.image resources/most_loved.png 400 _
+.image ../../resources/most_loved.png 400 _
 
 .link https://insights.stackoverflow.com/survey/2018#most-loved-dreaded-and-wanted Stack Overflow - Developer Survey Results 2018
