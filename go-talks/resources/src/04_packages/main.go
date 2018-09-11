@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/mercadolibre/golang-tutorial-public/go-talks/resources/src/04_packages/math"
 )
 
