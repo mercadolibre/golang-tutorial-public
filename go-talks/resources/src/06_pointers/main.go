@@ -10,6 +10,7 @@ func main() {
 	fmt.Println("X Value:" + strconv.Itoa(x))
 
 	y := new(int)
+	fmt.Printf("Y:%p\n", y)
 	fmt.Println("Y Value:" + strconv.Itoa(*y))
 
 	*y = 4

@@ -8,12 +8,12 @@ func main() {
 	a := new(int)
 	*a = 10
 
-	fmt.Printf("Before method -> value: %d \n", *a)
+	fmt.Printf("Before method    -> value: %d \n", *a)
 	increment(a)
-	fmt.Printf("After method -> value: %d \n", *a)
+	fmt.Printf("After  method    -> value: %d \n", *a)
 }
 
 func increment(a *int) {
 	*a++
-	fmt.Printf("In increment method -> value: %d \n", *a)
+	fmt.Printf("Increment method -> value: %d \n", *a)
 }
