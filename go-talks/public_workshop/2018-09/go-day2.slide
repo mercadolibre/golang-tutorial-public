@@ -18,35 +18,35 @@ https://bit.ly/2p1o20n
 
 * Punteros
 
-.play -edit ../resources/src/06_pointers/main.go
+.play -edit ../../resources/src/06_pointers/main.go
 
 * Jugando con punteros 1
 
-.play -edit ../resources/src/06_pointers/1/main.go
+.play -edit ../../resources/src/06_pointers/1/main.go
 
 * Jugando con punteros 2
 
-.play -edit ../resources/src/06_pointers/2/main.go
+.play -edit ../../resources/src/06_pointers/2/main.go
 
 * Jugando con punteros 3
 
-.play -edit ../resources/src/06_pointers/3/main.go
+.play -edit ../../resources/src/06_pointers/3/main.go
 
 * Jugando con punteros 4
 
-.play -edit ../resources/src/06_pointers/4/main.go
+.play -edit ../../resources/src/06_pointers/4/main.go
 
 * Jugando con punteros 5
 
-.play -edit ../resources/src/06_pointers/5/main.go
+.play -edit ../../resources/src/06_pointers/5/main.go
 
 * Tipo de datos
 
-.code ../resources/src/07_types/main.go /START OMIT/,/END OMIT/
+.code ../../resources/src/07_types/main.go /START OMIT/,/END OMIT/
 
 * Tipo de datos - continuación 
 
-.play ../resources/src/07_types/main.go /^func main/,/^}/
+.play ../../resources/src/07_types/main.go /^func main/,/^}/
 
 * Structs - inicialización
 
@@ -87,7 +87,7 @@ https://bit.ly/2p1o20n
 
 Array Loop
 
-.play ../resources/src/09_collections/1/main.go
+.play ../../resources/src/09_collections/1/main.go
 
 
 * Collections #2
@@ -98,20 +98,20 @@ Slices
 	Q2 := months[4:7]                                      summer := months[6:9]
 	fmt.Println(Q2)     // ["April" "May" "June"]          fmt.Println(summer) // ["June" "July" "August"]”
 
-.image ../resources/slices.png _ _
+.image ../../resources/slices.png _ _
 
 
 * Collections #2
 
 Slice Loop
 
-.play ../resources/src/09_collections/2/main.go
+.play ../../resources/src/09_collections/2/main.go
 
 * Collections #3
 
 Map Loop
 
-.play ../resources/src/09_collections/3/main.go
+.play ../../resources/src/09_collections/3/main.go
 
 * 3º Ejercicio (struct, punteros, slices)
 
@@ -119,7 +119,7 @@ Hacer un programa que reciba por parametro una lista de enteros, los almacene en
 
 * Funciones como valores
 
-.play ../resources/src/10_functions_as_values/main.go
+.play ../../resources/src/10_functions_as_values/main.go
 
 * Creando tipos -> &, new y make 
 
@@ -145,7 +145,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 - new  -> siempre va al heap
 - make -> Escape Analysis
 
-.image ../resources/escape-analysis.jpg 450 _
+.image ../../resources/escape-analysis.jpg 450 _
 
 
 * Heap & Escape Analysis
@@ -156,7 +156,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Interfaces
 
-.play ../resources/src/11_interfaces/1/main.go
+.play ../../resources/src/11_interfaces/1/main.go
 
 * Interfaces continuación
 
@@ -171,7 +171,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Interfaces continuación
 
-.play ../resources/src/11_interfaces/2/main.go /^func main/,/^}/
+.play ../../resources/src/11_interfaces/2/main.go /^func main/,/^}/
 
 * Composition
 
@@ -194,7 +194,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Composition continuación
 
-.play ../resources/src/15_composition/1/main.go /^func main/,/^}/
+.play ../../resources/src/15_composition/1/main.go /^func main/,/^}/
 
 * Composition continuación
 
@@ -206,7 +206,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 	    return fmt.Sprintf("powers: %s", "flight")
 	}
     
-.play ../resources/src/15_composition/2/main.go /^func main/,/^}/
+.play ../../resources/src/15_composition/2/main.go /^func main/,/^}/
 
 * 4º Ejercicio
 
