@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 	"time"
 )
 
@@ -13,18 +13,18 @@ func main() {
 	go panicFunc()
 	go panicFunc()
 
-	time.Sleep(2*time.Second)
+	time.Sleep(2 * time.Second)
 	fmt.Println("Program ends gracefully")
 }
 
-func panicFunc(){
+func panicFunc() {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Printf("Panic recovered. Error:%v\n",err)
+			fmt.Printf("Panic recovered. Error:%v\n", err)
 		}
 	}()
 
 	panic(errors.New("forced panic"))
 }
-// END OMIT
 
+// END OMIT
