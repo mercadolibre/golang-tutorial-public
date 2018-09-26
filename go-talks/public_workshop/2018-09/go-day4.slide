@@ -1,0 +1,113 @@
+Golang workshop - Day 4
+
+Buenos Aires
+Octubre 2018
+
+Alejandro Perez Albiero
+Eric Kohan
+Federico Roasio
+
+* WIFI
+
+Red -> guest
+
+Pass: Meli2017
+
+* Presentación 
+
+https://bit.ly/2p48ZTC
+
+* Agenda
+
+- Challenge
+- High Scalability
+ - 1. Evolución del stack
+ - 2. Migración items-api
+- Diploma, medalla y beso
+
+* Challenge - Estrategias AVG
+
+- Cálculo on the fly: promedio ponderado
+- Cálculo on the fly: promedios parciales
+
+* Challenge - Estrategias concurrencia
+
+- Identificar cuello de botella: I/O.
+- Estrategia: múltiples lectores, distinto offset.
+- Estrategia: leer chunks de líneas con WG y proceso parcial -> merge.
+
+* Challenge - Percentiles
+
+- Almacenar los números, ordenarlos, quedarse con el 5%.  Problema: límite de memoria
+- Sabiendo cuantos nros tenés, almacenar el 5% mayor. 2 recorridas.
+- Implementar un algoritmo de estimación online de percentiles.  
+.link https://github.com/influxdata/tdigest 
+- No reinventar la rueda: utilizar una lib.
+
+
+* Challenge - Ganadores 
+
+- Damián Luna
+- Jose Figueredo
+- Federico Martinez
+- Hernan Ojeda
+- Francisco Reyna
+- Nicolas Vellon
+- Julio Augusto Mascitti
+- Alejandro Gastón Alvarez
+- Luciano Albornoz
+
+Sigue ->
+
+* Challenge - Ganadores
+
+- Fran Gamba
+- Patricio Lo Duca
+- Pablo Cha
+- Jesus Gutierrez
+- Gabriel Steinberg
+- Gaston de Orta
+- Leonel Domenech
+- Tomás Nocetti
+
+* High Scalability Go: evolución del Stack
+
+* V0: Arquitectura monolítica.
+
+- Java y Oracle
+
+.image ../../resources/marte.jpg 400 _
+
+* V1: microservicios en datacenter propio.
+
+- Groovy/Grails, Oracle, MySQL, MongoDB, Redis, Rabbit...
+
+.image ../../resources/bigbang.jpg 400 _
+
+* V2: PaaS multi-vendor y stack optimizado.
+
+- Java/Go + SQL (Oracle, MySql) y NoSQL (Cassandra).
+
+.image ../../resources/marsterra.jpg 400 _
+
+* Platform
+
+- Fury + Servicios
+
+.image ../../resources/fury_plat.png
+
+* High Scalability Go: API de alto tráfico.
+
+- items-api.
+
+* Cerveza
+
+* Diplomas
+
+
+
+
+
+
+
+
