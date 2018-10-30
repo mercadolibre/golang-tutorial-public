@@ -1,5 +1,3 @@
-
-
 *Presentación GO
 
 -Daniel Larregola
@@ -12,7 +10,6 @@
 -Llevamos a cabo todo el procesamiento offline de pagos 
 -Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
 -Usamos Golang para los procesos que mantienen consistencia. 
-
 
 * Motivación
 
