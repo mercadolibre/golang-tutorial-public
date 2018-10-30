@@ -9,7 +9,8 @@
 - Nuestros desafios son la escalabilidad, consistencia, performance y uptime 
 - Llevamos a cabo todo el procesamiento offline de pagos 
 - Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
-- Usamos Golang para los procesos que mantienen consistencia. 
+- Usamos Golang para los procesos que mantienen consistencia
+- Procesamos 45k rpm con tiempos de respuesta promedio de 15ms 
 
 * Motivación
 
@@ -26,6 +27,25 @@
 - Concurrente (multi-core, asincrónico).
 - Que compile a código nativo y rápido.
 - Que tenga un memory footprint bajo.
+
+* Ventajas de GO
+
+- Multiplataforma
+- Sintaxis muy simplificada
+- Gestión automática de la memoria (recolector de basura)
+- Importacion más sencilla
+- Admite diferentes valores de devolución para funciones y métodos
+- Corrección de código automatizada (gofmt)	 
+- Concurrencia	 
+- Extensa biblioteca estándar, sobre todo para HTTP y tareas de red
+
+*Desventajas de GO
+
+- No soporta tipos genéricos
+- Orientado a objetos (solo parcialmente)
+- Oferta limitada de bibliotecas y paquetes externos
+- Cambiar de lenguajes clásicos orientados a objetos como Java o C++ requiere esfuerzo
+- Hasta ahora pocos manuales y expertos
 
 * Motivación: Sweet Spot
 
