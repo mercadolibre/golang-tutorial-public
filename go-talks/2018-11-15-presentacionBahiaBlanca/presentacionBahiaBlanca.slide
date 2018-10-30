@@ -1,3 +1,19 @@
+
+
+*Presentación GO
+
+-Daniel Larregola
+-Rodrigo Barco
+
+*Qué hacemos? Team Payments-Core
+
+-Diseñamos, desarrollamos y mantemos la API Core de pagos
+-Nuestros desafios son la escalabilidad, consistencia, performance y uptime 
+-Llevamos a cabo todo el procesamiento offline de pagos 
+-Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
+-Usamos Golang para los procesos que mantienen consistencia. 
+
+
 * Motivación
 
 - El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
