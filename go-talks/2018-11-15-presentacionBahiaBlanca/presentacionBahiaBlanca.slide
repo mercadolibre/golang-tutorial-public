@@ -1,15 +1,15 @@
-*Presentación GO
+* Presentación GO
 
--Daniel Larregola
--Rodrigo Barco
+- Daniel Larregola
+- Rodrigo Barco
 
-*Qué hacemos? Team Payments-Core
+* Qué hacemos? Team Payments-Core
 
--Diseñamos, desarrollamos y mantemos la API Core de pagos
--Nuestros desafios son la escalabilidad, consistencia, performance y uptime 
--Llevamos a cabo todo el procesamiento offline de pagos 
--Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
--Usamos Golang para los procesos que mantienen consistencia. 
+- Diseñamos, desarrollamos y mantemos la API Core de pagos
+- Nuestros desafios son la escalabilidad, consistencia, performance y uptime 
+- Llevamos a cabo todo el procesamiento offline de pagos 
+- Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
+- Usamos Golang para los procesos que mantienen consistencia. 
 
 * Motivación
 
