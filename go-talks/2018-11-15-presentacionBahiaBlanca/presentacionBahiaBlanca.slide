@@ -1,0 +1,264 @@
+* Motivación
+
+- El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.7.x y los cambios en la API fueron mínimos.
+- Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
+- Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
+- El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
+
+* Motivación: Objetivos
+
+- Que fuera simple para escribir (menos es más). 
+- Que fuera simple para leer (nos pasamos mucho tiempo leyendo código de otras personas).
+- Concurrente (multi-core, asincrónico).
+- Que compile a código nativo y rápido.
+- Que tenga un memory footprint bajo.
+
+* Motivación: Sweet Spot
+
+- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
+
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
+
+* Algunos proyectos que incluyen Go
+
+- YouTube 
+- dl.google.com
+- Booking.com
+- Blogger
+- Datadog
+- Facebook
+- Github
+- Google Code 
+- Netflix
+- Mercadolibre ;)
+
+* ¿Proyectos hechos en GO?
+
+Docker
+
+.image ../resources/docker.png _ _
+
+* ¿Proyectos hechos en GO?
+
+Kubernetes
+
+.image ../resources/kubernetes.png _ _
+
+* ¿Proyectos hechos en GO?
+
+CockroachDB (beta)
+
+.image ../resources/cockroach.png _ _
+
+* ¿Proyectos hechos en GO?
+
+.image ../resources/dropbox.jpg _ _
+
+* ¿Paradigma?
+
+- Imperativo
+- Estructurado
+- No orientado a objetos (¿?)
+
+* Go Basics
+
+- Fuertemente tipado
+- Inferencia de tipos
+- Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
+- Parámetros pasados siempre por “valor”
+- Punteros para pasar parámetros por “referencia”
+- Composition
+- Interfaces
+- Garbage Collection (GC)
+- Built in Web Server
+- Built in Testing framework
+
+
+* ¿Donde programar?
+
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[hhttps://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
+
+
+* Tipos Básicos
+
+- bool
+- string
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- byte // alias for uint8
+- rune // alias for int32 - unicode code point
+- float32 float64
+- complex64 complex128
+
+* Constantes
+
+- Pueden ser del tipo: character, string, boolean o valores numéricos
+
+- Ejemplos:
+
+	const World = "世界"
+	const Truth = true
+
+* Inicialización de Variables
+
+	var s string
+	var s string = ""
+	var s = ""
+	s:=""
+
+*Zero* *value:* *0* para numéricos - *false* para booleanos - *""* (string vacio) para strings
+
+.play ../resources/src/01_zero_values/main.go
+
+* Tipos de if
+
+	if x < 0 { }
+
+	if v := math.Pow(x, n); v < lim {}
+
+	if ... {} else { }
+
+* Iteraciones #1
+
+_for_initialization;_condition;_post_{_}_
+
+.play ../resources/src/02_iterations/0/main.go
+
+* Iteraciones #2
+
+_for_condition_{_}_
+
+.play ../resources/src/02_iterations/1/main.go
+
+* Iteraciones #3
+
+_for_{_}_
+
+.play ../resources/src/02_iterations/2/main.go
+
+* Iteraciones #4
+
+_using_range_
+
+.play ../resources/src/02_iterations/3/main.go
+
+* Switch
+
+.play ../resources/src/02_iterations/4/main.go
+
+* Funciones
+
+.play ../resources/src/03_functions/main.go
+
+* Conversión de variables
+
+.play ../resources/src/05_variables_type_convertion/main.go
+
+* Punteros
+
+.play ../resources/src/06_pointers/main.go
+
+* Tipo de datos
+
+.code ../resources/src/07_types/main.go /START OMIT/,/END OMIT/
+
+* Tipo de datos - continuación
+
+.play ../resources/src/07_types/main.go /^func main/,/^}/
+
+* Structs
+
+	type Vertex struct {
+		X, Y int
+	}
+
+	var (
+		v1 = Vertex{1, 2}  // has type Vertex
+		v2 = Vertex{X: 1}  // Y:0 is implicit
+		v3 = Vertex{}      // X:0 and Y:0
+		p  = &Vertex{1, 2} // has type *Vertex
+	)
+
+* Structs continuación
+
+	type tree struct {
+		value       int
+		left, right *tree
+	}
+
+	func add(t *tree, value int) *tree {
+		if t == nil {
+			// Equivalent to return &tree{value: value}.
+			t = new(tree)
+			t.value = value
+			return t
+		}
+		if value < t.value {
+			t.left = add(t.left, value)
+		} else {
+			t.right = add(t.right, value)
+		}
+		return t
+	}
+
+
+* Interfaces
+
+.play ../resources/src/11_interfaces/1/main.go
+
+* Interfaces continuación
+
+	type Flash struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Flash) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "speed")
+	}
+
+* Interfaces continuación
+
+.play ../resources/src/11_interfaces/2/main.go /^func main/,/^}/
+
+* Composition
+
+	type SuperHero interface {
+		Powers()
+	}
+
+	type Superman struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Superman) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "invulnerability, heat vision, flight, speed")
+	}
+
+	type SuperBoy struct {
+		Superman
+	}
+
+* Composition continuación
+
+.play ../resources/src/15_composition/1/main.go /^func main/,/^}/
+
+* Composition continuación
+
+	type SuperBoy struct {
+	    Superman
+	}
+
+	func (s *SuperBoy) Powers() string {
+	    return fmt.Sprintf("powers: %s", "flight")
+	}
+    
+.play ../resources/src/15_composition/2/main.go /^func main/,/^}/
