@@ -309,6 +309,13 @@ Las gorutinas corren en el mismo espacio de memoria, por lo que el acceso a memo
 
 * Go routines continuación
 
+func say(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
+}
+
 .play ../resources/src/14_gorutines/initial.go /^func main/,/^}/
 
 * Channels
