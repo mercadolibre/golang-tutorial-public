@@ -323,5 +323,4 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 
 * Channels continuación
 
-.play ../resources/src/22_channels/initial/main.go /^func main/,/^}/
-
+.play ../resources/src/22_channels/initial/main.go
