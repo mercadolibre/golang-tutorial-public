@@ -309,7 +309,7 @@ Las gorutinas corren en el mismo espacio de memoria, por lo que el acceso a memo
 
 * Go routines continuación
 
-.play ../resources/src/22_channels/initial.go /^func main/,/^}/
+.play ../resources/src/14_gorutines/initial.go /^func main/,/^}/
 
 * Channels
 
