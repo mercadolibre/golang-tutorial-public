@@ -39,7 +39,7 @@
 - Concurrencia	 
 - Extensa biblioteca estándar, sobre todo para HTTP y tareas de red
 
-*Desventajas de GO
+* Desventajas de GO
 
 - No soporta tipos genéricos
 - Orientado a objetos (solo parcialmente)
@@ -68,23 +68,11 @@
 
 * ¿Proyectos hechos en GO?
 
-Docker
-
 .image ../resources/docker.png _ _
-
-* ¿Proyectos hechos en GO?
-
-Kubernetes
 
 .image ../resources/kubernetes.png _ _
 
-* ¿Proyectos hechos en GO?
-
-CockroachDB (beta)
-
 .image ../resources/cockroach.png _ _
-
-* ¿Proyectos hechos en GO?
 
 .image ../resources/dropbox.jpg _ _
 
@@ -190,21 +178,11 @@ _using_range_
 
 .play ../resources/src/03_functions/main.go
 
-* Conversión de variables
-
-.play ../resources/src/05_variables_type_convertion/main.go
 
 * Punteros
 
 .play ../resources/src/06_pointers/main.go
 
-* Tipo de datos
-
-.code ../resources/src/07_types/main.go /START OMIT/,/END OMIT/
-
-* Tipo de datos - continuación
-
-.play ../resources/src/07_types/main.go /^func main/,/^}/
 
 * Structs
 
@@ -301,22 +279,11 @@ _using_range_
 Una gorutina es un hilo liviano manejado por Go en tiempo de ejecución.
 - *go f(x, y, z)*
 
-comienza una nueva gorutina que ejecuta:
-
-- *f(x, y, z)*
-
 Las gorutinas corren en el mismo espacio de memoria, por lo que el acceso a memoria compartida debe estar sincronizado.
 
 * Go routines continuación
 
-func say(s string) {
-	for i := 0; i < 5; i++ {
-		time.Sleep(100 * time.Millisecond)
-		fmt.Println(s)
-	}
-}
-
-.play ../resources/src/14_gorutines/initial.go /^func main/,/^}/
+.play ../resources/src/14_gorutines/initial.go
 
 * Channels
 
@@ -331,3 +298,6 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 * Channels continuación
 
 .play ../resources/src/22_channels/initial/main.go
+
+* Patrones de diseño
+
