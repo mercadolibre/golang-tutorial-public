@@ -5,12 +5,17 @@
 
 * Qué hacemos? Team Payments-Core
 
-- Diseñamos, desarrollamos y mantemos la API Core de pagos
-- Nuestros desafios son la escalabilidad, consistencia, performance y uptime 
-- Llevamos a cabo todo el procesamiento offline de pagos 
-- Miles de pagos se actualizan por minuto de forma offline de manera asincrona 
-- Usamos Golang para los procesos que mantienen consistencia
-- Procesamos 45k rpm con tiempos de respuesta promedio de 15ms 
+- Diseñamos, desarrollamos y mantenemos la API Core de pagos.
+- Somos los responsable de procesar TODOS los pagos de MercadoLibre y MercadoPago en LATAM
+- Procesamos 2.5k rpm de creación de pagos
+- Nuestros desafíos son la escalabilidad, consistencia, performance y uptime
+
+* ¿Para qué usamos GO?
+
+- Usamos Golang para el procesamiento offline de pagos y el envío de notificaciones de pagos a los usuarios
+- Procesamos 45k rpm de actualizaciones de pagos con tiempos de respuesta promedio de 15ms.
+- Enviamos 8k rpm de novedades de pagos con tiempos promedios de 10ms
+- Bajamos al 20% la cantidad de Vms utilizadas con la migración de Java a Go
 
 * Motivación
 
@@ -27,6 +32,12 @@
 - Concurrente (multi-core, asincrónico).
 - Que compile a código nativo y rápido.
 - Que tenga un memory footprint bajo.
+
+* Motivación: Sweet Spot
+
+- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
+
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
 
 * Ventajas de GO
 
@@ -46,12 +57,6 @@
 - Oferta limitada de bibliotecas y paquetes externos
 - Cambiar de lenguajes clásicos orientados a objetos como Java o C++ requiere esfuerzo
 - Hasta ahora pocos manuales y expertos
-
-* Motivación: Sweet Spot
-
-- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
-
-- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
 
 * Algunos proyectos que incluyen Go
 
@@ -94,18 +99,6 @@
 - Garbage Collection (GC)
 - Built in Web Server
 - Built in Testing framework
-
-
-* ¿Donde programar?
-
-- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
-- [[https://goclipse.github.io][Plugin para Eclipse]]
-- [[hhttps://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
-- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
-- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
-- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
-- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
-
 
 * Tipos Básicos
 
@@ -299,5 +292,31 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 
 .play ../resources/src/22_channels/initial/main.go
 
-* Patrones de diseño
+* Patrones de diseño (Mediator)
+
+.image ../resources/mediator.png _ _
+
+* Patrones de diseño (Mediator) continuación
+
+.play ../resources/src/24_desing_patterns/mediator.go
+
+* Patrones de diseño (Chain of responsability)
+
+.image ../resources/chain_of_responsability.png _ _
+
+* Patrones de diseño (Chain of responsability) continuación
+
+.play ../resources/src/24_desing_patterns/chain_of_responsability.go
+
+* Patrones de diseño (Strategy)
+
+.image ../resources/strategy.png _ _
+
+* Patrones de diseño (Strategy) continuación
+
+.play ../resources/src/24_desing_patterns/strategy.go
+
+* Preguntas
+
+.image ../resources/questions.jpg _ _
 
