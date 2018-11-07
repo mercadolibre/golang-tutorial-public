@@ -1,3 +1,9 @@
+package main
+
+import (
+	"fmt"
+)
+
 // Interface Mediador
 type Mediador interface {
     MostrarMensaje(Usuario, string)

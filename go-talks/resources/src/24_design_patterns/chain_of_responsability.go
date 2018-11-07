@@ -1,3 +1,9 @@
+package main
+
+import (
+  "fmt"
+)
+
 // Interface
 type Receptor interface {
     ProcesarMensaje(int, string) string

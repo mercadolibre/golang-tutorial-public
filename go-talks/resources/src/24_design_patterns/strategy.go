@@ -1,3 +1,9 @@
+package main
+
+import (
+	"fmt"
+)
+
 // Interface
 type Estrategia interface {
     RealizarOperacion(int, int) int
