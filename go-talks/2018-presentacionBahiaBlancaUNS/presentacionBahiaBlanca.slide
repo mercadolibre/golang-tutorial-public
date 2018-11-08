@@ -1,4 +1,4 @@
-* Presentación GO
+* Intro a GO
 
 - Daniel Larrégola
 - Rodrigo Barco
@@ -7,7 +7,6 @@
 
 - Diseñamos, desarrollamos y mantenemos la API Core de pagos.
 - Somos los responsable de procesar TODOS los pagos de MercadoLibre y MercadoPago en LATAM
-- Procesamos 2.5k rpm de creación de pagos
 - Nuestros desafíos son la escalabilidad, consistencia, performance y uptime
 - En el primer día del último cyberMonday, procesamos más de 2.2 millones de transacciones por más de 140 millones de dólares
 
@@ -21,7 +20,7 @@
 * Motivación
 
 - El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
-- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.7.x y los cambios en la API fueron mínimos.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.11.x y los cambios en la API fueron mínimos.
 - Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
 - Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
 - El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
@@ -42,21 +41,20 @@
 
 * Ventajas de GO
 
-- Multiplataforma
-- Sintaxis muy simplificada
-- Gestión automática de la memoria (recolector de basura)
-- Importacion más sencilla
-- Admite diferentes valores de devolución para funciones y métodos
-- Corrección de código automatizada (gofmt)	 
-- Concurrencia	 
-- Extensa biblioteca estándar, sobre todo para HTTP y tareas de red
+- Sintaxis clara y estandarizada
+- El compilador fuerza a que sigas buenas practicas
+- El compilador es MUY rápido
+- Soporte de concurrencia y fácil de manejar
+- Fácil levantar un servidor
+- Alta performance 
+- Fácil de aprender
+- Fácil subir a producción
 
 * Desventajas de GO
 
 - No soporta tipos genéricos
 - Orientado a objetos (solo parcialmente)
 - Oferta limitada de bibliotecas y paquetes externos
-- Cambiar de lenguajes clásicos orientados a objetos como Java o C++ requiere esfuerzo
 - Hasta ahora pocos manuales y expertos
 
 * Algunos proyectos que incluyen Go
@@ -72,16 +70,6 @@
 - Netflix
 - Mercadolibre ;)
 
-* ¿Proyectos hechos en GO?
-
-.image ../resources/docker.png _ _
-
-.image ../resources/kubernetes.png _ _
-
-.image ../resources/cockroach.png _ _
-
-.image ../resources/dropbox.jpg _ _
-
 * ¿Paradigma?
 
 - Imperativo
@@ -92,7 +80,7 @@
 
 - Fuertemente tipado
 - Inferencia de tipos
-- Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
+- Las funciones pueden ser pasadas como parámetros
 - Parámetros pasados siempre por “valor”
 - Punteros para pasar parámetros por “referencia”
 - Composition
@@ -295,15 +283,15 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 
 * Patrones de diseño (Mediator)
 
-.image ../resources/mediator.png _ _
+.image ../resources/mediator.png 400 400
 
 * Patrones de diseño (Mediator) continuación
 
-.play ../resources/src/24_design_pattern/mediator2.go
+.play ../resources/src/24_design_pattern/mediator3.go
 
 * Patrones de diseño (Chain of responsability)
 
-.image ../resources/chain_of_responsability.png _ _
+.image ../resources/chain_of_responsability.png 400 400
 
 * Patrones de diseño (Chain of responsability) continuación
 
@@ -311,7 +299,7 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 
 * Patrones de diseño (Strategy)
 
-.image ../resources/strategy.png _ _
+.image ../resources/strategy.png 400 400
 
 * Patrones de diseño (Strategy) continuación
 
