@@ -9,6 +9,7 @@
 - Somos los responsable de procesar TODOS los pagos de MercadoLibre y MercadoPago en LATAM
 - Procesamos 2.5k rpm de creación de pagos
 - Nuestros desafíos son la escalabilidad, consistencia, performance y uptime
+- En el primer día del último cyberMonday, procesamos más de 2.2 millones de transacciones por más de 140 millones de dólares
 
 * ¿Para qué usamos GO?
 
@@ -298,7 +299,7 @@ Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin n
 
 * Patrones de diseño (Mediator) continuación
 
-.play ../resources/src/24_design_pattern/mediator.go
+.play ../resources/src/24_design_pattern/mediator2.go
 
 * Patrones de diseño (Chain of responsability)
 
