@@ -17,13 +17,13 @@ func (s *Superman) Powers() {
 	fmt.Printf("%s powers: %s", s.Alias, "invulnerability, heat vision, flight, speed")
 }
 
-type Flash struct {
+type Batman struct {
 	Alias string
 	Age   int
 }
 
-func (s *Flash) Powers() {
-	fmt.Printf("%s powers: %s", s.Alias, "speed")
+func (s *Batman) Powers() {
+	fmt.Printf("%s powers: %s", s.Alias, "money")
 }
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 
 	fmt.Println("")
 
-	var flash SuperHero = &Flash{Alias: "Flash", Age: 24}
+	var batman SuperHero = &Batman{Alias: "Batman", Age: 24}
 
-	flash.Powers()
+	batman.Powers()
 
 	fmt.Println("")
 }

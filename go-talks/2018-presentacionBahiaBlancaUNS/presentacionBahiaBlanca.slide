@@ -10,12 +10,16 @@
 - Nuestros desafíos son la escalabilidad, consistencia, performance y uptime
 - En el primer día del último cyberMonday, procesamos más de 2.2 millones de transacciones por más de 140 millones de dólares
 
+.image ../resources/mercadolibrelogo.png _ _
+
 * ¿Para qué usamos GO?
 
 - Usamos Golang para el procesamiento offline de pagos y el envío de notificaciones de pagos a los usuarios
 - Procesamos 45k rpm de actualizaciones de pagos con tiempos de respuesta promedio de 15ms.
 - Enviamos 8k rpm de novedades de pagos con tiempos promedios de 10ms
 - Bajamos al 20% la cantidad de Vms utilizadas con la migración de Java a Go
+
+.image ../resources/golang_ironman.jpeg _ _
 
 * Motivación
 
@@ -38,6 +42,8 @@
 - *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
 
 - "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
+
+.image ../resources/golang.png _ _
 
 * Ventajas de GO
 
@@ -76,6 +82,8 @@
 - Estructurado
 - No orientado a objetos (¿?)
 
+.image ../resources/gopher_programmer.jpeg 400 400
+
 * Go Basics
 
 - Fuertemente tipado
@@ -86,8 +94,6 @@
 - Composition
 - Interfaces
 - Garbage Collection (GC)
-- Built in Web Server
-- Built in Testing framework
 
 * Tipos Básicos
 
@@ -208,18 +214,21 @@ _using_range_
 
 * Interfaces continuación
 
-	type Flash struct {
+	type Batman struct {
 		Alias string
 		Age   int
 	}
 
-	func (s *Flash) Powers() {
-		fmt.Printf("%s powers: %s", s.Alias, "speed")
+	func (s *Batman) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "money")
 	}
+
+.image ../resources/gopher_batman.png 300 300
 
 * Interfaces continuación
 
 .play ../resources/src/11_interfaces/2/main.go /^func main/,/^}/
+
 
 * Composition
 
@@ -263,6 +272,8 @@ Una gorutina es un hilo liviano manejado por Go en tiempo de ejecución.
 
 Las gorutinas corren en el mismo espacio de memoria, por lo que el acceso a memoria compartida debe estar sincronizado.
 
+.image ../resources/goroutines.png 300 300
+
 * Go routines continuación
 
 .play ../resources/src/14_gorutines/initial.go
@@ -275,35 +286,41 @@ Los canales son un conducto tipado a través del cual se pueden enviar o recibir
 	v := <-ch  // Receive from ch, and
 	           // assign value to v.
 
-Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin necdesidad de locks declarados explícitamente, por ejemplo.
+- Por defecto son bloqueantes, lo que permite a las go-rutinas sincronizarce sin necesidad de locks declarados explícitamente, por ejemplo.
+
+- Pueden generar deadlocks.
+
+- Pueden ser unidireccionales.
+
+- Pueden ser cerrados.
 
 * Channels continuación
 
 .play ../resources/src/22_channels/initial/main.go
 
-* Patrones de diseño (Mediator)
+* Patrones de concurrencia en GO (Timer)
 
-.image ../resources/mediator.png 400 400
+.play ../resources/src/25_concurrency_patterns/timer.go
 
-* Patrones de diseño (Mediator) continuación
+* Patrones de concurrencia en GO (Ping pong)
 
-.play ../resources/src/24_design_pattern/mediator3.go
+.play ../resources/src/25_concurrency_patterns/ping_pong.go
 
-* Patrones de diseño (Chain of responsability)
+* Patrones de concurrencia en GO (Ping pong)
 
-.image ../resources/chain_of_responsability.png 400 400
+.play ../resources/src/25_concurrency_patterns/ping_pong_2.go
 
-* Patrones de diseño (Chain of responsability) continuación
+* Patrones de concurrencia en GO (Fan in)
 
-.play ../resources/src/24_design_pattern/chain_of_responsability.go
+.play ../resources/src/25_concurrency_patterns/fan_in.go
 
-* Patrones de diseño (Strategy)
+* Patrones de concurrencia en GO (Workers)
 
-.image ../resources/strategy.png 400 400
+.code ../resources/src/25_concurrency_patterns/workers.go
 
-* Patrones de diseño (Strategy) continuación
+* Patrones de concurrencia en GO (Workers)
 
-.play ../resources/src/24_design_pattern/strategy.go
+.play ../resources/src/25_concurrency_patterns/workers_main.go /^func main/,/^}/
 
 * Preguntas
 
