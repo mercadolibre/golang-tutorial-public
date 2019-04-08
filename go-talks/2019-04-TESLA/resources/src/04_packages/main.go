@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mercadolibre/golang-tutorial-public/go-talks/resources/src/04_packages/math"
+	"github.com/mercadolibre/golang-tutorial-public/go-talks/2019-04-TESLA/resources/src/04_packages/math"
 )
 
 func main() {

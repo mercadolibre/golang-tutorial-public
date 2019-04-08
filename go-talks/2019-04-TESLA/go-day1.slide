@@ -64,7 +64,8 @@ http://bit.ly/2rCH9Af (EDITAR)
 
 - Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
 - Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
-- Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
+- [[https://github.com/golang/go/wiki/SettingGOPATH][Exportar GOROOT]] apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
+ 
 - Para chequear tu la instalación correcta tipear -> go version 
 
 * ¿Donde programar?
@@ -354,6 +355,10 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 * Gorutines
 
 .play resources/src/14_gorutines/main.go
+
+* WaitGroup
+
+.play resources/src/15_waitgroup/main.go
 
 * Defer
 
