@@ -1,0 +1,431 @@
+Golang workshop - Day 1
+
+Buenos Aires
+Abril 2019
+
+Fernando Rosselló
+Nadia Mirra
+Santiago Leira
+
+* Presentación 
+
+http://bit.ly/2rCH9Af (EDITAR)
+
+* Motivación: Objetivos
+
+- Que fuera simple para escribir (menos es más). 
+- Que fuera simple para leer (nos pasamos mucho tiempo leyendo código de otras personas).
+- Concurrente (multi-core, asincrónico).
+- Que compile a código nativo y rápido (soporta cross compilation)
+- Que tenga un memory footprint bajo.
+- Que fuera lo mas "autocontenido" posible.
+
+* Motivación
+
+- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
+
+- "Si bien Go es un lenguaje de propósito general, su punto fuerte es que permite escribir software de gran escala, concurrente y server-side"
+
+* Quienes actualmente utilizan Go?
+
+- YouTube 
+- dl.google.com
+- Booking.com
+- Blogger
+- Datadog
+- Facebook
+- Github
+- Google Code 
+- Netflix
+- Mercadolibre ;)
+- [[https://github.com/golang/go/wiki/GoUsers][Otros...]]
+
+* ¿Paradigma?
+
+- Imperativo
+- Estructurado
+- No orientado a objetos (¿?)
+
+* Go Basics
+
+- Fuertemente tipado
+- Inferencia de tipos
+- Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
+- Parámetros pasados siempre por “valor”
+- Punteros para pasar parámetros por “referencia”
+- Garbage Collector
+- “Semi” Orientado a objetos -> Composition
+- Interfaces
+- Built in Web Server
+- Built in Testing framework
+
+
+* Instalando GO!
+
+- Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
+- Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
+- Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
+- Para chequear tu la instalación correcta tipear -> go version 
+
+* ¿Donde programar?
+
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[hhttps://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
+
+* Go Basics: Workspace
+
+GOPATH
+	|_ BIN: Contiene los archivos ejecutables
+	|_ SRC: Contiene los fuentes organizados en paquetes
+	|_ PKG: Contiene los paquetes en formato binario
+
+*Default* *GOPATH* (go >1.8)
+
+- Unix: $HOME/go 
+
+* 1º Ejercicio
+
+Hacer el mitico -> "Hello world" en Golang.
+
+* Hello world!!
+
+.play ../resources/src/00_hello_world/main.go
+
+Comandos básicos desde consola
+
+	go command [arguments]
+
+	build     Compila paquetes y dependencias
+	clean     Remueve archivos object     
+	get       Descarga e instala paquetes y dependencias
+	install   Compila e instala paquetes y dependencias
+	run       Compila y corre paquetes y dependencias
+	test      Testea paquetes
+	fmt       Formatea tu código
+	...
+
+* Keywords
+
+- Los Keywords son palabras reservadas
+- No pueden ser usados como identificadores
+- Go apunta a ser simple y tener pocos keywords
+
+.image ../resources/keywords.png _ _
+
+
+* Comentarios
+
+- 2 formas de hacer comentarios
+- 
+	/* Multiline comment
+		..
+	*/
+- 
+	// Single line comment
+
+* Tipos Básicos
+
+- bool
+- string
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- byte // alias for uint8
+- rune // alias for int32 - unicode code point
+- float32 float64
+- complex64 complex128
+
+* Constantes
+
+- Pueden ser del tipo: character, string, boolean o valores numéricos
+
+- Ejemplos:
+
+	const World = "世界"
+	const Truth = true
+
+
+* Inicialización de Variables
+
+	var s string
+	var s string = ""
+	var s = ""
+	s:= ""
+
+*Zero* *value:*
+
+*0* para numéricos - *false* para booleanos - *""* para strings
+
+.play ../resources/src/01_zero_values/main.go
+
+* Paquetes
+
+.code ../resources/src/04_packages/math/math.go
+.play ../resources/src/04_packages/main.go
+
+* Tipos de if
+
+	if x < 0 { }
+
+	if v := math.Pow(x, n); v < lim {}
+
+	if ... {} else { }
+
+* Iteraciones #1
+
+_for_initialization;_condition;_post_{_}_
+
+.play ../resources/src/02_iterations/0/main.go
+
+* Iteraciones #2
+
+_for_condition_{_}_
+
+.play ../resources/src/02_iterations/1/main.go
+
+* Iteraciones #3
+
+_for_{_}_
+
+.play ../resources/src/02_iterations/2/main.go
+
+* Iteraciones #4
+
+_using_range_
+
+.play ../resources/src/02_iterations/3/main.go
+
+* Switch
+
+.play ../resources/src/02_iterations/4/main.go
+
+* Switch sin condición
+
+.play ../resources/src/02_iterations/5/main.go
+
+* Funciones
+
+.play ../resources/src/03_functions/main.go
+
+* Funciones - Parámetros de retorno con nombre
+
+.play ../resources/src/03_1_functions/main.go
+
+* Conversión de variables
+
+.play ../resources/src/05_variables_type_convertion/main.go
+
+* 2º Ejercicio
+
+Hacer un programa que reciba un parámetro *p* por consola y que cacule la suma de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
+
+- Ayuda para leer argumentos desde la consola
+
+	for i := 1; i < len(os.Args); i++ {
+		fmt.Println(os.Args[i])
+	}
+
+Golang workshop
+
+* Punteros
+
+.play ../resources/src/06_pointers/main.go
+
+* Jugando con punteros 1
+
+.play ../resources/src/06_pointers/1/main.go
+
+* Jugando con punteros 2
+
+.play ../resources/src/06_pointers/2/main.go
+
+* Jugando con punteros 3
+
+.play ../resources/src/06_pointers/3/main.go
+
+* Jugando con punteros 4
+
+.play ../resources/src/06_pointers/4/main.go
+
+* Jugando con punteros 5
+
+.play ../resources/src/06_pointers/5/main.go
+
+* Tipo de datos
+
+.code ../resources/src/07_types/main.go /START OMIT/,/END OMIT/
+
+* Tipo de datos - continuación
+
+.play ../resources/src/07_types/main.go /^func main/,/^}/
+
+* Structs - inicialización
+
+	type Vertex struct {
+		X, Y int
+	}
+
+	var (
+		v1 = Vertex{1, 2}  // has type Vertex
+		v2 = Vertex{X: 1}  // Y:0 is implicit
+		v3 = Vertex{}      // X:0 and Y:0
+		p  = &Vertex{1, 2} // has type *Vertex
+	)
+
+* Structs 
+
+	type tree struct {
+		value       int
+		left, right *tree
+	}
+
+	func add(t *tree, value int) *tree {
+		if t == nil {
+			// Equivalent to return &tree{value: value}.
+			t = new(tree)
+			t.value = value
+			return t
+		}
+		if value < t.value {
+			t.left = add(t.left, value)
+		} else {
+			t.right = add(t.right, value)
+		}
+		return t
+	}
+
+* Collections #1
+
+Array Loop
+
+.play ../resources/src/09_collections/1/main.go
+
+
+* Collections #2
+
+Slices
+
+	months := [...]string{1: "January", /* ... */, 12: "December"}
+	Q2 := months[4:7]                                      summer := months[6:9]
+	fmt.Println(Q2)     // ["April" "May" "June"]          fmt.Println(summer) // ["June" "July" "August"]”
+
+.image ../resources/slices.png _ _
+
+
+* Collections #2
+
+Slice Loop
+
+.play ../resources/src/09_collections/2/main.go
+
+* Collections #3
+
+Map Loop
+
+.play ../resources/src/09_collections/3/main.go
+
+* 3º Ejercicio (struct, punteros, slices)
+
+Hacer un programa que reciba por parametro una lista de enteros, los almacene en un slice, popule un arbol binario y despues imprima los valores en orden ascendente
+
+* Funciones como valores
+
+.play ../resources/src/10_functions_as_values/main.go
+
+* Creando tipos -> &, new y make 
+
+_make_: función built-in que se usa únicamente para allocar e inicializar slices, maps o channels. Se pasa el tipo, el tamaño y la capacidad. Como resultado obtenemos la variable en si, no un puntero
+
+	slice := make([]int, 0, 10)
+
+_new_: función built-in que se usa para allocar memoria, retorna un puntero al valor allocado con zero value
+
+	someVar := new(int)
+
+_&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pero ademas nos permite inicializar atributos en variables complejas: 
+
+	type Dog struct {
+		Name string
+		Age  int
+	}
+
+	d := &Dog{Name: "Tom", Age: 14}
+
+* Gorutines
+
+.play ../resources/src/14_gorutines/main.go
+
+* Defer
+
+.play ../resources/src/13_defer/main.go
+
+* Recover
+
+.play ../resources/src/16_recover/main.go /START OMIT/,/END OMIT/
+
+
+* Interfaces
+
+.play ../resources/src/11_interfaces/1/main.go
+
+* Interfaces continuación
+
+	type Flash struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Flash) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "speed")
+	}
+
+* Interfaces continuación
+
+.play ../resources/src/11_interfaces/2/main.go /^func main/,/^}/
+
+* Composition
+
+	type SuperHero interface {
+		Powers()
+	}
+
+	type Superman struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Superman) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "invulnerability, heat vision, flight, speed")
+	}
+
+	type SuperBoy struct {
+		Superman
+	}
+
+* Composition continuación
+
+.play ../resources/src/15_composition/1/main.go /^func main/,/^}/
+
+* Composition continuación
+
+	type SuperBoy struct {
+	    Superman
+	}
+
+	func (s *SuperBoy) Powers() string {
+	    return fmt.Sprintf("powers: %s", "flight")
+	}
+    
+.play ../resources/src/15_composition/2/main.go /^func main/,/^}/
+
+* 4º Ejercicio
+
+Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
+
+- Normales: Pagan el 100%
+- Jubilados: Tienen un 50% de descuento
+- Invitados: No pagan nada	

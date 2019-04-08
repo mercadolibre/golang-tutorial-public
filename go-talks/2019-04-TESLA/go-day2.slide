@@ -1,0 +1,305 @@
+Golang workshop - Day 2
+
+Buenos Aires
+Abril 2019
+
+Fernando Rosselló
+Nadia Mirra
+Santiago Leira
+
+* Presentación 
+
+http://bit.ly/2sUpqWV
+
+* Errors
+
+.play ../resources/src/12_errors/main.go
+
+* Channels
+
+Un channel en Golang es un tipo de dato, un conducto, que nos permite enviar y recibir mensajes a través de él.
+
+Creación de un channel:
+
+	var sChannel chan string = make(chan string)
+
+El operador <- nos permite enviar información a un channel:
+
+	sChannel <- "hello"
+
+y recibir información desde él:
+
+	var s string = <- sChannel
+
+Los channels son bloqueantes, una vez que se completa su capacidad el emisor queda bloqueado al intentar enviar un mensaje hasta que se libere espacio en el channel. De la misma manera, si un receptor intenta leer un channel vacío quedará bloqueado hasta que llegue un nuevo mensaje.
+
+* Channels continuación
+
+A la creación de un channel se le puede asignar un tamaño dando lugar a un buffered Channel:
+ 
+	var sChannel chan string = make(chan string, 100)
+ 
+en estos casos el emisor sólo se bloqueará cuando el buffer esté lleno y el receptor cuando esté vacío.
+ 
+Para iterar sobre el contenido de un channel podemos utilizar el for + range:
+ 
+	for s := range sChannel {
+		// do something with s
+	}
+
+* Channels continuación
+
+Usamos la built-in fuction "close" para cerrar un channel e indicar a todos los consumers que dicho channel no se van a enviar más elementos y así liberarlos.
+ 
+	close(intChannel)
+ 
+los consumers pueden chequear el status de un channel mediante un segundo parámetro en la expresión de asignación:
+ 
+	v, ok := <- sChannel
+
+* Channels: Simple channel
+
+.play ../resources/src/22_channels/simple/main.go
+
+* Channels: Buffered channel
+
+.play ../resources/src/22_channels/buffered/main.go
+
+* Channel Synchronization
+
+.play ../resources/src/22_channels/synchronization/basic/main.go
+
+* Channel Synchronization
+
+.play ../resources/src/22_channels/synchronization/select/main.go
+
+* Testing
+
+Golang posee un built-in testing framework 
+
+Esté es provisto mediante el package testing
+
+Todo archivo Go con el suffix “_test.go” es considerado un test suite en Go
+
+En cada test suite podemos correr:
+	- Test
+	- Benchmarks
+	- Examples
+
+* Testing continuación
+
+Cada TestXxx function en una test suite es un test
+
+Cada BenchmarkXxx function en una test suite es un benchmark
+
+Cada ExampleXxx function es una test suite is an example
+
+White box testing / Black box testing
+
+El comando “go test” corre los test del proyecto
+
+* Testing: Init
+
+	func TestMain(m *testing.M) {
+		before()
+
+		code := m.Run()
+
+		after()
+
+		os.Exit(code)
+	}
+
+
+* Testing: Test
+
+	//Basic Test
+	func TestXXX(t *testing.T) {
+		//t.Parallel()
+
+		result, err := add(a, b)
+
+		if err != nil {
+			t.Fatal("We got some error", err)
+
+			//Skip test
+			//t.Skip("We got some error", err)
+		}
+
+		expected := 6
+
+		if result != expected {
+			t.Fatalf("%d + %d Should be equals to %d", a, b, expected)
+		}
+	}
+
+* Testing: Benchmark
+
+	//Basic Benchmark
+	func BenchmarkXXX(bt *testing.B) {
+
+		for i := 0; i < bt.N; i++ { add(a, b) }
+
+		//Setting N limit
+		bt.N = 1000
+
+		//Reset timer
+		//b.ResetTimer()
+
+		for i := 0; i < bt.N; i++ { add(a, b) }
+
+		//Parallel
+		bt.RunParallel(
+			func(pb *testing.PB) {
+				for pb.Next() {
+					add(a, b)
+				}
+			}
+		)
+		
+	}
+
+* Testing: Examples
+	
+	//Basic Example
+	func ExampleXXX() {
+		result, _ := add(a, b)
+
+		fmt.Println(result)
+
+		// Output: 6
+	}
+
+
+- [[https://golang.org/pkg/strings/#example_Contains][strings contains example]]
+
+* Testing: Not native frameworks
+
+- [[https://github.com/franela/goblin][Goblin]]
+- [[https://github.com/stretchr/testify][Testify]]
+- [[https://github.com/onsi/ginkgo][Ginkgo]]
+- [[https://github.com/smartystreets/goconvey][GoConvey]]
+
+* 5º Ejercicio
+
+	Agregar un test, un benchmark y un example al ejercicio de suma de un valor parametrizado p 
+	entre 0 <= v <= p. 
+
+	*1º Ejercicio del curso.
+
+* Building APIs in Go
+
+.image ../resources/gingonic.png 500 500
+
+* Varias opciones
+
+- [[http://beego.me/][*Beego*]]: Framework web -> Templates & ORM 
+- [[https://github.com/go-martini/martini][*Martini*]]: Framework web -> @deprecated
+- [[https://gin-gonic.github.io/gin/][*Gin-Gonic*]]: Framework web -> Basado en Martini 10x mas performante
+- [[https://goji.io/][*Goji*]]: Request Multiplexer
+- [[http://www.gorillatoolkit.org/][*Gorilla*]]: Web toolkit
+- [[https://github.com/julienschmidt/httprouter][*httprouter*]]: High performance router
+- [[https://golang.org/pkg/net/http][*net/http*]]: Libreria http estandar de go
+- ….
+
+* ¿Por qué Gin-Gonic?
+
+- Compatible con net/http
+- Usa httprouter (muy rápido)
+- Interface familiar y amigable
+- Trabaja bien con JSON
+- Más de 7000 estrellas en github
+- No reinventar la rueda
+- Había que elegir uno :)
+
+* Instalando gin-gonic
+
+	go get -u github.com/gin-gonic/gin
+
+* Ejemplo: Ping
+
+.play ../resources/src/18_gin_hello_world/main.go
+
+
+* Métodos http soportados
+
+	func main() {
+		// Creates a gin router with default middleware:
+		// logger and recovery (crash-free) middleware
+		router := gin.Default()
+		router.GET("/someGet", getting)
+		router.POST("/somePost", posting)
+		router.PUT("/somePut", putting)
+		router.DELETE("/someDelete", deleting)
+		router.PATCH("/somePatch", patching)
+		router.HEAD("/someHead", head)
+		router.OPTIONS("/someOptions", options)
+		// By default it serves on :8080 unless a
+		// PORT environment variable was defined.
+		router.Run() // router.Run(":3000") for a hard coded port
+	}
+
+
+* Params
+
+.play ../resources/src/19_gin_params/main.go
+
+* Parámetros en Querystring
+
+.play ../resources/src/20_gin_query_params/main.go
+
+* Otro ejemplo: query + post form
+
+.play ../resources/src/21_gin_post/main.go
+
+* Agrupando paths
+
+	func main() {
+		router := gin.Default()
+		v1 := router.Group("/v1"){      // Simple group: v1
+			v1.POST("/login", loginEndpoint)
+			v1.POST("/submit", submitEndpoint)
+			v1.POST("/read", readEndpoint)
+		}
+		v2 := router.Group("/v2"){     // Simple group: v2
+			v2.POST("/login", loginEndpoint)
+			v2.POST("/submit", submitEndpoint)
+			v2.POST("/read", readEndpoint)
+		}
+		router.Run(":8080")
+	}
+
+* Middlewares
+
+	r := gin.Default()    equivale a 	   r := gin.New()
+											r.Use(gin.Logger())
+											r.Use(gin.Recovery())
+
+.image ../resources/gingonic_middlewares.png
+
+* Custom Middlewares (authorization, gzip, etc) 
+
+	Router.Use(dataDogHandler())
+	
+	func dataDogHandler() gin.HandlerFunc {
+		return func(c *gin.Context) {
+			buf, _ := ioutil.ReadAll(context.Request.Body)
+			rdr1 := ioutil.NopCloser(bytes.NewBuffer(buf))
+			rdr2 := ioutil.NopCloser(bytes.NewBuffer(buf)) //We have to create a new Buffer, because rdr1 will be read.
+
+			logger.Infof("New request. URL: %s, Body: %s ", context.Request.URL, readBody(rdr1))
+
+			context.Request.Body = rdr2
+			context.Next()
+		}
+	}
+
+* Model Binding y validación
+
+.play ../resources/src/22_gin_model/main.go /START OMIT/,/END OMIT/
+
+* 6º Ejercicio
+
+	Evolucionar el primer ejercicio del curso de forma tal que ahora se ejecute 
+	en un webserver que escuche en el puerto 8080 y sea invocado al llamar al servicio 
+	GET /calculate?value=p. El servicio debe devolver la respuesta en formato JSON
