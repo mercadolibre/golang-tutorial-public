@@ -11,6 +11,68 @@ Santiago Leira
 
 http://bit.ly/2sUpqWV
 
+* Interfaces
+
+.play resources/src/11_interfaces/1/main.go
+
+* Interfaces continuación
+
+	type Flash struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Flash) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "speed")
+	}
+
+* Interfaces continuación
+
+.play resources/src/11_interfaces/2/main.go /^func main/,/^}/
+
+* Composition
+
+	type SuperHero interface {
+		Powers()
+	}
+
+	type Superman struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Superman) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "invulnerability, heat vision, flight, speed")
+	}
+
+	type SuperBoy struct {
+		Superman
+	}
+
+* Composition continuación
+
+.play resources/src/15_composition/1/main.go /^func main/,/^}/
+
+* Composition continuación
+
+	type SuperBoy struct {
+	    Superman
+	}
+
+	func (s *SuperBoy) Powers() string {
+	    return fmt.Sprintf("powers: %s", "flight")
+	}
+    
+.play resources/src/15_composition/2/main.go /^func main/,/^}/
+
+* 4º Ejercicio
+
+Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
+
+- Normales: Pagan el 100%
+- Jubilados: Tienen un 50% de descuento
+- Invitados: No pagan nada	
+
 * Errors
 
 .play ../resources/src/12_errors/main.go
