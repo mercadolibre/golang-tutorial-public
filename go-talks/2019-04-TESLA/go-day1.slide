@@ -94,7 +94,7 @@ Hacer el mitico -> "Hello world" en Golang.
 
 * Hello world!!
 
-.play ../resources/src/00_hello_world/main.go
+.play resources/src/00_hello_world/main.go
 
 Comandos básicos desde consola
 
@@ -115,17 +115,17 @@ Comandos básicos desde consola
 - No pueden ser usados como identificadores
 - Go apunta a ser simple y tener pocos keywords
 
-.image ../resources/keywords.png _ _
+.image resources/keywords.png _ _
 
 
 * Comentarios
 
 - 2 formas de hacer comentarios
-- 
+
 	/* Multiline comment
 		..
 	*/
-- 
+ 
 	// Single line comment
 
 * Tipos Básicos
@@ -156,16 +156,14 @@ Comandos básicos desde consola
 	var s = ""
 	s:= ""
 
-*Zero* *value:*
+*Zero* *value:* *0* para numéricos - *false* para booleanos - *""* para strings
 
-*0* para numéricos - *false* para booleanos - *""* para strings
-
-.play ../resources/src/01_zero_values/main.go
+.play resources/src/01_zero_values/main.go
 
 * Paquetes
 
-.code ../resources/src/04_packages/math/math.go
-.play ../resources/src/04_packages/main.go
+.code resources/src/04_packages/math/math.go
+.play resources/src/04_packages/main.go
 
 * Tipos de if
 
@@ -179,45 +177,45 @@ Comandos básicos desde consola
 
 _for_initialization;_condition;_post_{_}_
 
-.play ../resources/src/02_iterations/0/main.go
+.play resources/src/02_iterations/0/main.go
 
 * Iteraciones #2
 
 _for_condition_{_}_
 
-.play ../resources/src/02_iterations/1/main.go
+.play resources/src/02_iterations/1/main.go
 
 * Iteraciones #3
 
 _for_{_}_
 
-.play ../resources/src/02_iterations/2/main.go
+.play resources/src/02_iterations/2/main.go
 
 * Iteraciones #4
 
 _using_range_
 
-.play ../resources/src/02_iterations/3/main.go
+.play resources/src/02_iterations/3/main.go
 
 * Switch
 
-.play ../resources/src/02_iterations/4/main.go
+.play resources/src/02_iterations/4/main.go
 
 * Switch sin condición
 
-.play ../resources/src/02_iterations/5/main.go
+.play resources/src/02_iterations/5/main.go
 
 * Funciones
 
-.play ../resources/src/03_functions/main.go
+.play resources/src/03_functions/main.go
 
 * Funciones - Parámetros de retorno con nombre
 
-.play ../resources/src/03_1_functions/main.go
+.play resources/src/03_1_functions/main.go
 
 * Conversión de variables
 
-.play ../resources/src/05_variables_type_convertion/main.go
+.play resources/src/05_variables_type_convertion/main.go
 
 * 2º Ejercicio
 
@@ -229,39 +227,37 @@ Hacer un programa que reciba un parámetro *p* por consola y que cacule la suma 
 		fmt.Println(os.Args[i])
 	}
 
-Golang workshop
-
 * Punteros
 
-.play ../resources/src/06_pointers/main.go
+.play resources/src/06_pointers/main.go
 
 * Jugando con punteros 1
 
-.play ../resources/src/06_pointers/1/main.go
+.play resources/src/06_pointers/1/main.go
 
 * Jugando con punteros 2
 
-.play ../resources/src/06_pointers/2/main.go
+.play resources/src/06_pointers/2/main.go
 
 * Jugando con punteros 3
 
-.play ../resources/src/06_pointers/3/main.go
+.play resources/src/06_pointers/3/main.go
 
 * Jugando con punteros 4
 
-.play ../resources/src/06_pointers/4/main.go
+.play resources/src/06_pointers/4/main.go
 
 * Jugando con punteros 5
 
-.play ../resources/src/06_pointers/5/main.go
+.play resources/src/06_pointers/5/main.go
 
 * Tipo de datos
 
-.code ../resources/src/07_types/main.go /START OMIT/,/END OMIT/
+.code resources/src/07_types/main.go /START OMIT/,/END OMIT/
 
 * Tipo de datos - continuación
 
-.play ../resources/src/07_types/main.go /^func main/,/^}/
+.play resources/src/07_types/main.go /^func main/,/^}/
 
 * Structs - inicialización
 
@@ -302,7 +298,7 @@ Golang workshop
 
 Array Loop
 
-.play ../resources/src/09_collections/1/main.go
+.play resources/src/09_collections/1/main.go
 
 
 * Collections #2
@@ -313,20 +309,20 @@ Slices
 	Q2 := months[4:7]                                      summer := months[6:9]
 	fmt.Println(Q2)     // ["April" "May" "June"]          fmt.Println(summer) // ["June" "July" "August"]”
 
-.image ../resources/slices.png _ _
+.image resources/slices.png _ _
 
 
 * Collections #2
 
 Slice Loop
 
-.play ../resources/src/09_collections/2/main.go
+.play resources/src/09_collections/2/main.go
 
 * Collections #3
 
 Map Loop
 
-.play ../resources/src/09_collections/3/main.go
+.play resources/src/09_collections/3/main.go
 
 * 3º Ejercicio (struct, punteros, slices)
 
@@ -334,7 +330,7 @@ Hacer un programa que reciba por parametro una lista de enteros, los almacene en
 
 * Funciones como valores
 
-.play ../resources/src/10_functions_as_values/main.go
+.play resources/src/10_functions_as_values/main.go
 
 * Creando tipos -> &, new y make 
 
@@ -357,20 +353,20 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Gorutines
 
-.play ../resources/src/14_gorutines/main.go
+.play resources/src/14_gorutines/main.go
 
 * Defer
 
-.play ../resources/src/13_defer/main.go
+.play resources/src/13_defer/main.go
 
 * Recover
 
-.play ../resources/src/16_recover/main.go /START OMIT/,/END OMIT/
+.play resources/src/16_recover/main.go /START OMIT/,/END OMIT/
 
 
 * Interfaces
 
-.play ../resources/src/11_interfaces/1/main.go
+.play resources/src/11_interfaces/1/main.go
 
 * Interfaces continuación
 
@@ -385,7 +381,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Interfaces continuación
 
-.play ../resources/src/11_interfaces/2/main.go /^func main/,/^}/
+.play resources/src/11_interfaces/2/main.go /^func main/,/^}/
 
 * Composition
 
@@ -408,7 +404,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 
 * Composition continuación
 
-.play ../resources/src/15_composition/1/main.go /^func main/,/^}/
+.play resources/src/15_composition/1/main.go /^func main/,/^}/
 
 * Composition continuación
 
@@ -420,7 +416,7 @@ _&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pe
 	    return fmt.Sprintf("powers: %s", "flight")
 	}
     
-.play ../resources/src/15_composition/2/main.go /^func main/,/^}/
+.play resources/src/15_composition/2/main.go /^func main/,/^}/
 
 * 4º Ejercicio
 
