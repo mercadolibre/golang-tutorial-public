@@ -1,20 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"strconv"
-)
+import "fmt"
 
 func main() {
-	x := 4
-	fmt.Println("X Value:" + strconv.Itoa(x))
+	var p *int
+	fmt.Println(p == nil)
 
 	y := new(int)
 	fmt.Printf("Y:%p\n", y)
-	fmt.Println("Y Value:" + strconv.Itoa(*y))
+	fmt.Printf("Y Value: %d\n", *y)
 
 	*y = 4
-	fmt.Println("Y Value:" + strconv.Itoa(*y))
+	fmt.Printf("Y Value: %d\n", *y)
+
+	x := 4
+	fmt.Printf("X Value: %d\n", x)
 
 	if y == &x {
 		fmt.Println("X & Y are equals")

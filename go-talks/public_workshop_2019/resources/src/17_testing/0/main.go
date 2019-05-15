@@ -22,13 +22,12 @@ func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
 
-// START OMIT
 type Shape interface {
 	Area() float64
 }
 
 func PrintArea(s Shape) {
-	fmt.Printf("Area: %f\n", s.Area())
+	fmt.Printf("Area: %f", s.Area())
 }
 
 func main() {
@@ -37,5 +36,3 @@ func main() {
 	PrintArea(r)
 	PrintArea(c)
 }
-
-// END OMIT
