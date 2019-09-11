@@ -1,0 +1,340 @@
+Golang workshop - Day 1
+
+Buenos Aires
+Mayo 2019
+
+APICore
+
+* ¿Quiénes somos?
+
+.image ../../resources/eric.jpg 110 _
+.caption [[mailto:eric.kohan@mercadolibre.com][Eric Kohan]] _Software_ _Engineering_ _Manager_
+
+* ¿Qué hacemos? Team APICore
+
+- Diseñamos y desarrollamos las APIs centrales de MercadoLibre y MercadoPago.
+- El desafío es la *escalabilidad* y la *consistencia*. Son problemas _grandes_: muchos datos (algunos muy sensibles $$$) y muchísimo tráfico.
+- Tienen que ser rápidas - cada segundo de espera empobrece la experiencia de uso.
+- De alta disponibilidad - uptime 99.9...%
+- Y costo-eficientes.
+
+- *Golang* es un lenguaje espectacular para hacer esto.
+
+* But first... WIFI
+
+Red -> guest
+
+Pass: mercadolibre
+
+* Roadmap
+
+- Clase 1: Filosofía de diseño. Go basics.
+- Clase 2: Memoria, Composición, Interfaces, Testing.
+- Clase 3: Concurrencia. APIs en Go.
+- Clase 4: High Scalability Go: aplicando el lenguaje en MELI.
+
+* Historia
+
+- Arranca como proyecto en 2007 dentro de Google. Goals: eliminar la *lentitud* y la *torpeza* a la hora de desarrollar software en Google.
+- Diseñado por Robert Griesemer, Rob Pike y Ken Thompson. [[https://www.youtube.com/watch?v=3yghHvvZQmA][Meet the authors]].
+- Predecesores? `C`. 
+- `C++`? No.
+- Anunciado al mundo en 2009, en 2012 se estabiliza la API con la versión 1.0 . La versión actual es la 1.13, siguiendo su promesa de [[https://golang.org/doc/go1compat][compatibilidad]].
+
+* Historia - el contexto en Google.
+
+- Muchos developers en sus primeros años de carrera, familiarizados -por la facultad- con lenguajes _procedurales_ como `C`.
+- Es imperativo que los desarrolladores puedan ser *productivos* *muy* *rápidamente* con lenguajes y herramientas _serias_.
+- El lenguaje fue diseñado por y para personas que escriben, leen y debuggean grandes piezas de software.
+
+* Motivación: ¿por qué?
+
+	Programming had become too difficult and the choice of languages was partly to blame. 
+	One had to choose either efficient compilation, efficient execution, or ease of programming; 
+	all three were not available in the same mainstream language.
+
+Necesidad de un lenguaje
+
+- *Moderno*: pensado para el *cloud* y procesadores multi-core.
+- *Amigable*: con herramientas de desarrollo (`testing`, `benchmarking`, `present`, `gofmt`) incluidas.
+- *Eficiente*: compilado, con tipos estáticos.
+- *Rápido*: rápido para buildear, rápido para ejecutar.
+
+* Motivación: ¿por qué?
+
+.image ./resources/compiling.png 500 _
+
+.link https://xkcd.com/303/
+
+* Motivación: Objetivos
+
+- Simple para escribir: menos es más. 
+- Simple para leer: nos pasamos mucho tiempo leyendo código de otras personas.
+- Concurrente (multi-core, asincrónico).
+- Para el cloud: que compile a un binario estático sin dependencias.
+- Memory footprint bajo.
+- Lo mas "autocontenido" posible.
+
+	... you can build a production binary on your Mac and ship it up to a Linux server 
+	and just run it without any crazy installs or any worrying about dependency conflicts. 
+
+	-- Brian Ketelsen, Microsoft. 
+
+* Motivación
+
+- *El*"sweet*spot"*de*Go*está*en*escribir*software*de*backend*.
+
+	Go is a good general purpose language, but the sweet spot it was designed for 
+	is writing large-scale, concurrent, server-side software.
+
+* Quiénes actualmente utilizan Go?
+
+- Mercadolibre ;)
+- YouTube 
+- Google
+- Microsoft
+- Uber
+- SpaceX
+- Facebook
+- Github
+- Netflix
+
+- [[https://github.com/golang/go/wiki/GoUsers][Otros...]]
+
+* ¿Proyectos hechos en GO?
+
+Docker
+
+.image ./resources/docker.png _ _
+
+* ¿Proyectos hechos en GO?
+
+Kubernetes
+
+.image ./resources/kubernetes.png _ _
+
+* ¿Proyectos hechos en GO?
+
+CockroachDB (first stable relese)
+
+.image ./resources/cockroach.png _ _
+
+* ¿Proyectos hechos en GO?
+
+.image ./resources/dropbox.jpg _ _
+
+* ¿Paradigma?
+
+- Imperativo (lineal, paso a paso)
+- Estructurado (loops, conditionals, functions)
+- No orientado a objetos (¿?)
+
+* Go Basics
+
+- Fuertemente tipado
+- Inferencia de tipos
+- Funciones son _first_ _class_ _citizens_: las funciones pueden ser pasadas como parámetros
+- Parámetros pasados siempre por _valor_, pero tenemos punteros
+- [[https://www.youtube.com/watch?v=mX5em6x40CA&t=2h03m00s][Gargabage Collector]]
+- "Semi” Orientado a objetos -> _Composition_, _Encapsulation_, _Polymorphism_, not _Inheritance_
+- Built in Web Server
+- Built in Testing framework
+
+
+* Instalando GO!
+
+- Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
+- Abrí el pkg y seguí las [[https://golang.org/doc/install][instrucciones]] en pantalla, Golang quedará instalado por default en -> /usr/local/go
+
+	The GOPATH environment variable specifies the location of your workspace. 
+	It defaults to a directory named go inside your home directory, 
+	so $HOME/go on Unix, and %USERPROFILE%\go (usually C:\Users\YourName\go) on Windows.
+
+- Exportar [[https://golang.org/doc/code.html#GOPATH][GOPATH]] apuntando a directorio de instalación, agregar  GOPATH/bin al PATH y LISTO :)
+
+	export GOPATH=$HOME/go
+	export PATH=$PATH:$GOPATH/bin
+
+- Para chequear tu la instalación correcta tipear -> go version 
+
+.link https://github.com/golang/go/wiki/SettingGOPATH Setting GOPATH
+
+* ¿Donde programar?
+
+- [[https://www.jetbrains.com/go][Goland]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[https://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
+
+* Go Basics: Workspace
+
+GOPATH
+	|_ BIN: Contiene los archivos ejecutables
+	|_ SRC: Contiene los fuentes organizados en paquetes
+	|_ PKG: Contiene los paquetes en formato binario
+
+*Default* *GOPATH* (go >1.8)
+
+- Unix: $HOME/go 
+- Windows: %USERPROFILE%/go (en general es `C:\Users\TuNombre\go`)
+
+* 1º Ejercicio
+
+Hacer el mítico -> "Hello world" en Golang.
+
+* Hello world!!
+
+.play -edit ./resources/src/00_hello_world/main.go
+
+Comandos básicos desde consola
+
+	go command [arguments]
+
+	build     Compila paquetes y dependencias
+	clean     Remueve archivos object     
+	get       Descarga e instala paquetes y dependencias
+	install   Compila e instala paquetes y dependencias
+	run       Compila y corre paquetes y dependencias
+	test      Testea paquetes
+	fmt       Formatea tu código
+	...
+
+* Keywords
+
+- Los Keywords son palabras reservadas
+- No pueden ser usados como identificadores
+- Go apunta a ser simple y tener pocos keywords
+
+.image ./resources/keywords.png _ _
+
+
+* Comentarios
+
+- 2 formas de hacer comentarios
+- Estilo C
+	/* Multiline comment
+		..
+	*/
+- Estilo C++
+	// Single line comment
+
+* Tipos Básicos
+
+- bool
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- float32 float64
+- complex64 complex128
+- [[https://blog.golang.org/strings][string]]
+- byte // alias for uint8
+- rune // alias for int32 - unicode code point
+
+* Constantes
+
+- Pueden ser del tipo: rune, string, boolean o valores numéricos
+
+- Ejemplos:
+
+	const World = "世界"
+	const Truth = true
+
+
+* Inicialización de Variables
+
+	var s string
+	var s string = ""
+	var s = ""
+	s:=""
+
+*Zero* *value:*
+
+*0* para numéricos - *false* para booleanos - *""* para strings
+
+.play -edit ./resources/src/01_zero_values/main.go
+
+* Paquetes
+
+.code -edit ./resources/src/04_packages/math/math.go
+.play -edit ./resources/src/04_packages/main.go
+
+* Tipos de if
+
+	if x < 0 { }
+
+	if v := math.Pow(x, n); v < lim {}
+
+	if ... {} else { }
+
+* Iteraciones #1
+
+_for_initialization;_condition;_post_{_}_
+
+.play -edit ./resources/src/02_iterations/0/main.go
+
+* Iteraciones #2
+
+_for_condition_{_}_
+
+.play -edit ./resources/src/02_iterations/1/main.go
+
+* Iteraciones #3
+
+_for_{_}_
+
+.play -edit ./resources/src/02_iterations/2/main.go
+
+* Iteraciones #4
+
+_using_range_
+
+.play -edit ./resources/src/02_iterations/3/main.go
+
+* Switch
+
+.play -edit ./resources/src/02_iterations/4/main.go
+
+* Funciones
+
+.play -edit ./resources/src/03_functions/main.go
+
+.link https://blog.golang.org/gos-declaration-syntax Go's Declaration Syntax
+
+* Conversión de variables
+
+.play -edit ./resources/src/05_variables_type_convertion/main.go
+
+* 2º Ejercicio
+
+Hacer un programa que reciba un parámetro *p* por consola y que calcule la suma de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
+
+- Ayuda para leer argumentos desde la consola
+
+	for i := 1; i < len(os.Args); i++ {
+		fmt.Println(os.Args[i])
+	}
+
+* Por qué está bueno estudiar Golang hoy?
+
+- Fact 1: es útil llegar temprano.
+
+.image ./resources/technology_adoption.png 500 _
+
+* Por qué está bueno estudiar Golang hoy?
+
+- Fact 2: Go es muy joven y crece muy rápido -> somos early adopters!
+
+.image ./resources/programming_language_trends.png 400 _
+
+.link https://www.benfrederickson.com/ranking-programming-languages-by-github-users/ Ranking Programming Languages by GitHub Users
+
+* Por qué está bueno estudiar Golang hoy?
+
+- Y a la gente parece gustarle:
+
+.image ./resources/most_loved.png 400 _
+
+.link https://insights.stackoverflow.com/survey/2018#most-loved-dreaded-and-wanted Stack Overflow - Developer Survey Results 2018
