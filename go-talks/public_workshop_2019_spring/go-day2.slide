@@ -1,0 +1,395 @@
+Golang Workshop - Day 2
+
+Buenos Aires
+
+Mayo 2019
+
+APICore
+
+* ¿Quiénes somos?
+
+.image ./resources/flor.jpg 110 _
+.caption [[mailto:Florencia.Iglesias@mercadolibre.com][Florencia Iglesias]] _Software_ _Engineer_
+
+.image ./resources/Jesus_Gutierrez.JPEG 110 _
+.caption [[mailto:Jesus.Gutierrez@mercadolibre.com][Jesus Gutierrez]] _Software_ _Engineer_
+
+.image ./resources/saya.jpg 110 _
+.caption [[mailto:Gonzalo.Sayago@mercadolibre.com][Gonzalo Sayago]] _Software_ _Engineer_
+
+
+* WIFI
+
+Red -> guest
+
+Pass: mercadolibre
+
+* Punteros
+
+.play -edit ./resources/src/06_pointers/main.go
+
+* Jugando con punteros 1
+
+.play -edit ./resources/src/06_pointers/1/main.go
+
+* Jugando con punteros 2
+
+.play -edit ./resources/src/06_pointers/2/main.go
+
+* Jugando con punteros 3
+
+.play -edit ./resources/src/06_pointers/3/main.go
+
+* Jugando con punteros 4
+
+.play -edit ./resources/src/06_pointers/4/main.go
+
+* Jugando con punteros 5
+
+.play -edit ./resources/src/06_pointers/5/main.go
+
+* Tipo de datos
+
+.code ./resources/src/07_types/main.go /START OMIT/,/END OMIT/
+
+* Tipo de datos - continuación 
+
+.play ./resources/src/07_types/main.go /^func main/,/^}/
+
+* Structs - inicialización
+
+	type Vertex struct {
+		X, Y int
+	}
+
+	var (
+		v1 = Vertex{1, 2}  // has type Vertex
+		v2 = Vertex{X:1, Y:2}  // Vertex{1, 2}
+		v3 = Vertex{Y:2, X:1}  // Vertex{1, 2}
+		v4 = Vertex{X: 1}  // Y:0 is implicit - Vertex{1, 0}
+		v5 = Vertex{Y: 2}  // Y:0 is implicit - Vertex{0, 2}
+		v6 = Vertex{}      // X:0 and Y:0 - Vertex{0, 0}
+		p  = &Vertex{1, 2} // has type *Vertex
+	)
+
+
+.play ./resources/src/08_structs/structs/main.go /^func main/,/^}/
+
+
+* Structs 
+
+	type tree struct {
+		value       int
+		left, right *tree
+	}
+
+	func add(t *tree, value int) *tree {
+		if t == nil {
+			// Equivalent to return &tree{value: value}.
+			t = new(tree)
+			t.value = value
+			return t
+		}
+		if value < t.value {
+			t.left = add(t.left, value)
+		} else {
+			t.right = add(t.right, value)
+		}
+		return t
+	}
+
+* Collections #1
+
+Array
+
+.play ./resources/src/09_collections/1/main.go
+
+
+* Collections #2
+
+Slices
+
+	months := [...]string{1: "January", /* ... */, 12: "December"}
+	Q2 := months[4:7]                                      summer := months[6:9]
+	fmt.Println(Q2)     // ["April" "May" "June"]          fmt.Println(summer) // ["June" "July" "August"]”
+
+.image ./resources/slices.png _ _
+
+* Collections #2
+
+Slices
+
+.play ./resources/src/09_collections/2/a/main.go
+
+* Collections #2
+
+Slices
+
+.play ./resources/src/09_collections/2/b/main.go
+
+
+* Collections #2
+
+Slice
+
+.play ./resources/src/09_collections/2/c/main.go
+
+* Collections #3
+
+Map
+
+.play ./resources/src/09_collections/3/a/main.go
+
+* Collections #3
+
+Map
+
+.play ./resources/src/09_collections/3/b/main.go
+
+* 3º Ejercicio (struct, punteros, slices)
+
+Hacer un programa que reciba por parámetro una lista de enteros, los almacene en un slice, popule un arbol binario y después imprima los valores en orden ascendente.
+
+Hints:
+
+Versión 1: Crear un slice de enteros en forma literal.
+
+Versión 2: Tomar los datos desde la linea de comando, convertir a int y agregar al slice.
+
+Versión 3: Asignar la capacidad del slice en la declaración.
+
+Versión 4: Devolver un error si los datos ingresados no son enteros.
+
+* Creando tipos con make, new, &
+
+_make_: función built-in que se usa únicamente para alocar e inicializar slices, maps o channels. Se pasa el tipo, el tamaño y la capacidad. Como resultado obtenemos la variable en si, no un puntero
+
+	slice := make([]int, 0, 10)
+
+_new_: función built-in que se usa para alocar memoria, retorna un puntero al valor alocado con zero value
+
+	type Dog struct {
+		Name string
+		Age  int
+	}
+	firulais := new(Dog)
+
+_Implícita_ _y_ _&_: la inicialización implícita, más el _&_ es equivalente a _new_
+
+	dog := Dog{Name: "Tom", Age: 14}
+	dogPointer := &Dog{Name: "Tom", Age: 14}
+
+* Funciones como valores
+
+En Go, las funciones pueden pasarse como valor o guardarse en una variable
+
+.play ./resources/src/10_functions_as_values/0/main.go /START OMIT/,/END OMIT/
+
+* Lambda y closure
+
+.play ./resources/src/10_functions_as_values/1/main.go
+
+* Entonces, programación funcional en Go?
+
+.image ./resources/question-face.jpg 400 _
+
+
+[[https://youtu.be/5IKcPMJXkKs][-> Closures are the Generics of Go by Jon Bodner]]
+
+* Composición
+
+- Muy simple en teoría
+- Incluye un tipo sin nombre
+- Se pueden acceder a los parámetros y métodos exportados
+- El compilador usa una técnica llamada "promotion" 
+
+* Composition
+
+.play ./resources/src/15_composition/3/main.go
+
+* Composition continuación
+
+.play ./resources/src/15_composition/4/main.go /START OMIT/,/END OMIT/
+
+* Interfaces
+
+- Feature más importante del lenguaje según Rob Pike
+- Extensamente usadas en la standard library
+- Ejemplo claro de la simpleza y poder de Go
+- Es una manera de soportar métodos genéricos
+- Se puede hacer composición de interfaces
+
+* Interfaces
+
+	package main
+
+	import (
+		"math"
+	)
+
+	type Rectangle struct {
+		Width  float64
+		Height float64
+	}
+
+	func (r Rectangle) Area() float64 {
+		return r.Width * r.Height
+	}
+
+	type Circle struct {
+		Radius float64
+	}
+
+	func (c Circle) Area() float64 {
+		return math.Pi * c.Radius * c.Radius
+	}
+
+* Interfaces continuación
+
+.play ./resources/src/11_interfaces/1/main.go /START OMIT/,/END OMIT/
+
+* Interfaces Reader y Writer
+
+	type Reader interface {
+		Read(p []byte) (n int, err error)
+	}
+
+	type Writer interface {
+		Write(p []byte) (n int, err error)
+	}
+
+	// io.Copy
+	func Copy(dst Writer, src Reader) (written int64, err error)
+
+	file := File{}
+	socket := Socket{}
+
+	io.Copy(file, socket)
+
+	// net.http Post
+	func Post(url, contentType string, body io.Reader) (resp *Response, err error)
+
+* Composición de Interfaces
+
+	type Reader interface {
+		Read(p []byte) (n int, err error)
+	}
+
+	type Writer interface {
+		Write(p []byte) (n int, err error)
+	}
+	
+	type Closer interface {
+		Close() error
+	}
+
+	type ReadWriteCloser interface {
+		Reader
+		Writer
+		Closer
+	}
+
+* Interfaces Bonus
+
+Proverbios de Go
+
+- "Be conservative in what you send, be liberal in what you accept"
+- "The bigger the interface, the smallest the abstraction"
+
+Lo más importante de las interfaces es la cultura detrás de ellas, pequeñas piezas que abstraen cosas
+
+[[https://youtu.be/F4wUrj6pmSI][Understanding Go Interfaces by Frances Campoy]]
+
+* Testing
+
+Golang posee un built-in testing framework 
+
+Este es provisto mediante el package testing
+
+Todo archivo Go con el suffix “_test.go” es considerado un test suite en Go
+
+En cada test suite podemos correr:
+	- Test
+	- Benchmarks
+	- Examples
+
+* Testing continuación
+
+Cada TestXxx function en una test suite es un test
+
+Cada BenchmarkXxx function en una test suite es un benchmark
+
+Cada ExampleXxx function es una test suite is an example
+
+El comando “go test” corre los test del proyecto
+
+* Testing: Test
+
+	func TestArea(t *testing.T) {
+
+		t.Run("rectangles", func(t *testing.T) {
+			rectangle := Rectangle{12, 6}
+			got := rectangle.Area()
+			want := 72.0
+
+			if got != want {
+				t.Errorf("got %.2f want %.2f", got, want)
+			}
+		})
+
+		t.Run("circles", func(t *testing.T) {
+			circle := Circle{10}
+			got := circle.Area()
+			want := 314.1592653589793
+
+			if got != want {
+				t.Errorf("got %f want %f", got, want)
+			}
+		})
+	}
+
+* Testing: Benchmark
+
+	func BenchmarkArea(b *testing.B) {
+		rectangle := Rectangle{12, 6}
+		want := 72.0
+
+		for i := 0; i < b.N; i++ {
+			b.Run("rectangles", func(b *testing.B) {
+				got := rectangle.Area()
+				if got != want {
+					b.Errorf("got %.2f want %.2f", got, want)
+				}
+			})
+
+			b.RunParallel(
+				func(pb *testing.PB) {
+					for pb.Next() {
+						rectangle.Area()
+					}
+				},
+			)
+		}
+	}
+
+* Testing: Not native frameworks
+
+- [[https://github.com/stretchr/testify][Testify]]
+- [[https://github.com/franela/goblin][Goblin]]
+- [[https://github.com/onsi/ginkgo][Ginkgo]]
+- [[https://github.com/smartystreets/goconvey][GoConvey]]
+
+* 4º Ejercicio
+
+Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
+
+- General: Pagan el 100%.
+- Jubilados: Tienen un 50% de descuento.
+- Invitados: No pagan nada.
+
+* 5º Ejercicio
+
+	Agregar un test, un benchmark y un example al ejercicio de suma de un valor parametrizado p 
+	entre 0 <= v <= p. 
+
+	*1º Ejercicio del curso.
