@@ -198,10 +198,10 @@ En Go, las funciones pueden pasarse como valor o guardarse en una variable
 
 * Composición
 
-- Muy simple en teoría
-- Incluye un tipo sin nombre
-- Se pueden acceder a los parámetros y métodos exportados
-- El compilador usa una técnica llamada "promotion" 
+- Muy simple en teoría.
+- Funciona agregando un tipo de dato dentro de la nueva struct.
+- Se pueden acceder a los parámetros y métodos exportados.
+- El compilador usa una técnica llamada "promotion".
 
 * Composition
 
@@ -213,11 +213,11 @@ En Go, las funciones pueden pasarse como valor o guardarse en una variable
 
 * Interfaces
 
-- Feature más importante del lenguaje según Rob Pike
-- Extensamente usadas en la standard library
-- Ejemplo claro de la simpleza y poder de Go
-- Es una manera de soportar métodos genéricos
-- Se puede hacer composición de interfaces
+- Feature más importante del lenguaje, según Rob Pike.
+- Extensamente usadas en la standard library.
+- Ejemplo claro de la simpleza y poder de Go.
+- Es una manera de soportar métodos genéricos.
+- Se puede hacer composición de interfaces.
 
 * Interfaces
 
