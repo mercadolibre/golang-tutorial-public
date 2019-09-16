@@ -8,11 +8,11 @@ APICore
 
 * ¿Quiénes somos?
 
-.image ./resources/flor.jpg 110 _
-.caption [[mailto:Florencia.Iglesias@mercadolibre.com][Florencia Iglesias]] _Software_ _Engineer_
+.image ./resources/nacho-nieva.jpg 110 _
+.caption [[mailto:ignacio.nieva@mercadolibre.com][Ignacio Nieva]] _Software_ _Engineer_
 
-.image ./resources/Jesus_Gutierrez.JPEG 110 _
-.caption [[mailto:Jesus.Gutierrez@mercadolibre.com][Jesus Gutierrez]] _Software_ _Engineer_
+.image ./resources/ariel-rios.jpg 110 _
+.caption [[mailto:ariel.rios@mercadolibre.com][Ariel Ríos]] _Software_ _Engineer_
 
 .image ./resources/saya.jpg 110 _
 .caption [[mailto:Gonzalo.Sayago@mercadolibre.com][Gonzalo Sayago]] _Software_ _Engineer_
