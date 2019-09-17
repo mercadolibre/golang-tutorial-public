@@ -7,7 +7,7 @@ APICore
 
 * ¿Quiénes somos?
 
-.image ../../resources/eric.jpg 110 _
+.image ./resources/eric.jpg 110 _
 .caption [[mailto:eric.kohan@mercadolibre.com][Eric Kohan]] _Software_ _Engineering_ _Manager_
 
 * ¿Qué hacemos? Team APICore
