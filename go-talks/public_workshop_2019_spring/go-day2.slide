@@ -183,7 +183,7 @@ _Implícita_ _y_ _&_: la inicialización implícita, más el _&_ es equivalente 
 
 En Go, las funciones pueden pasarse como valor o guardarse en una variable
 
-.play ./resources/src/10_functions_as_values/0/main.go /START OMIT/,/END OMIT/
+.play -edit ./resources/src/10_functions_as_values/0/main.go /START OMIT/,/END OMIT/
 
 * Lambda y closure
 
