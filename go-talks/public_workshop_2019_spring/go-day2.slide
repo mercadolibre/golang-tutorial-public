@@ -216,7 +216,7 @@ En Go, las funciones pueden pasarse como valor o guardarse en una variable
 - Feature más importante del lenguaje, según Rob Pike.
 - Extensamente usadas en la standard library.
 - Ejemplo claro de la simpleza y poder de Go.
-- Es una manera de soportar métodos genéricos.
+- Es una manera de soportar métodos genéricos (Ej: encoding/json).
 - Se puede hacer composición de interfaces.
 
 * Interfaces
