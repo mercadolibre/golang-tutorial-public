@@ -294,7 +294,7 @@ En Go, las funciones pueden pasarse como valor o guardarse en una variable
 Proverbios de Go
 
 - "Be conservative in what you send, be liberal in what you accept"
-- "The bigger the interface, the smallest the abstraction"
+- "The bigger the interface, the weakest the abstraction"
 
 Lo más importante de las interfaces es la cultura detrás de ellas, pequeñas piezas que abstraen cosas
 
