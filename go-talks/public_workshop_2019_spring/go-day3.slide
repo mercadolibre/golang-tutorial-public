@@ -75,7 +75,7 @@ Cada programa de Go tiene al menos una goroutine ("main() goroutine") que es cre
 
 * WaitGroup
 
-.play -edit ./resources/src/23_wait_group/main.go
+.play -edit ./resources/src/23_wait_group/main.go /START OMIT/,/END OMIT/
 
 * Channels
 
