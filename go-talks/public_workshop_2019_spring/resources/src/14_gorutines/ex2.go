@@ -5,12 +5,12 @@ import (
 	"time"
 )
 
-func sayHello() {
-	fmt.Println("Hello gouroutines!")
+func sayHello2() {
+	fmt.Println("Hello goroutines!")
 }
 
 func main() {
-	go sayHello()
+	go sayHello2()
 	// Do other things
 	time.Sleep(time.Second)
 }

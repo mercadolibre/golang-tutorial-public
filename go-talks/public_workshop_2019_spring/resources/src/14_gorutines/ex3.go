@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// START OMIT
 func main() {
 
 	go func() {
@@ -19,3 +20,5 @@ func main() {
 	// Do other things
 	time.Sleep(time.Second)
 }
+
+// END OMIT

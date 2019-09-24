@@ -2,13 +2,22 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
-func sayHello() {
-	fmt.Println("Hello gouroutines!")
-}
-
+// START OMIT
 func main() {
 	go sayHello()
-	// Do other things
+
+	fmt.Println("Good bye!")
+
+	time.Sleep(2 * time.Second)
 }
+
+func sayHello() {
+	time.Sleep(time.Second)
+
+	fmt.Println("Hello goroutines!")
+}
+
+// END OMIT

@@ -62,15 +62,11 @@ Una goroutine es una función que se ejecuta concurrentemente con otro código.
 
 Cada programa de Go tiene al menos una goroutine ("main() goroutine") que es creada y ejecutada automáticamente cuando el proceso comienza.
 
-.play -edit ./resources/src/14_gorutines/ex1.go
+.play -edit ./resources/src/14_gorutines/ex1.go /START OMIT/,/END OMIT/
 
 * Goroutines
 
-.play -edit ./resources/src/14_gorutines/ex2.go
-
-* Goroutines
-
-.play -edit ./resources/src/14_gorutines/ex3.go
+.play -edit ./resources/src/14_gorutines/ex3.go /START OMIT/,/END OMIT/
 
 * Como esperar más inteligentemente
 
