@@ -162,14 +162,79 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 
 * Varias opciones
 
-- [[http://beego.me/][*Beego*]]: Framework web -> Templates & ORM 
-- [[https://github.com/go-martini/martini][*Martini*]]: Framework web -> @deprecated
-- [[https://gin-gonic.github.io/gin/][*Gin-Gonic*]]: Framework web -> Basado en Martini 10x mas performante
-- [[https://goji.io/][*Goji*]]: Request Multiplexer
-- [[http://www.gorillatoolkit.org/][*Gorilla*]]: Web toolkit
+- [[https://github.com/revel/revel/][*Revel*]]: A high-productivity web framework for the Go language
+.image ./resources/revel-framework-go.png 110 _
+
+Pros
+- Listo para usarse
+- Autonomo
+
+Cons
+- Base de código muy grande
+- No MongoDB
+
+* Varias opciones
+- [[https://gin-gonic.github.io/gin/][*Gin*]]: The fastest full-featured web framework for Golang. Crystal clear
+.image ./resources/gin-framework-go.png 110 _
+
+Pros
+-Minimalista / Delgado
+-Utilizable / Muy buena Doc
+-Agil (40x mas rapido que Martini)
+
+Cons
+Considerar en sistemas muy grandes, limitaciones en servidor, tiende a descargar mucho procesamiento para el cliente.
+
+* Varias opciones
+- [[https://github.com/go-martini/martini/][*Martini*]]: Classy web framework for Go -> @deprecated
+.image ./resources/martini-framework-go.png 110 _
+
+Pros
+-Delgado / Modular / Escalable
+-Buena Doc
+
+Cons
+-Mas lento que Gin
+-No se mantiene activamente (deprecado)
+-Inyeccion de dependencias
+
+* Varias opciones
+- [[http://www.gorillatoolkit.org/][*Gorilla*]]: A web toolkit for the Go programming language
+.image ./resources/gorilla-framework-go.png 110 _
+
+Pros
+- Admite Websockets (listo para usarse)
+- Enrutamiento
+- Escalable
+
+Cons
+- Esfuerzo en configuracion: Gorilla requiere más tiempo y esfuerzo para configurar componentes modulares.
+- Rendimiento comparado a otros frame.
+
+* Varias opciones
+- [[http://beego.me/][*Beego*]]: A web toolkit for the Go programming language
+.image ./resources/beego-framework-go.png 110 _
+
+Pros
+- Dispone de una gran bateria de funcionalidades, similar a Revel en esto, pero relativamente delgado (en comparacion a lo que hace)
+- ORM incorporado
+
+Cons
+- Almacenamiento en cache: falla de compilacion silenciosa
+- Muy detallado (ruidito de abeja)
+- Comunidad pobre / Inmadura
+
+* Libs
 - [[https://github.com/julienschmidt/httprouter][*httprouter*]]: High performance router
-- [[https://golang.org/pkg/net/http][*net/http*]]: Libreria http estandar de go
-- ….
+Uso: import "github.com/julienschmidt/httprouter"
+Descripción: Es un enrutador de solicitud HTTP de alto rendimiento basado en grafos
+
+
+
+- [[https://golang.org/pkg/net/http][*net/http*]]: HTTP Standard Library
+Uso: import "net/http"
+Descripción: Provee implementacion para HTTP client/server
+
 
 * ¿Por qué Gin-Gonic?
 
@@ -178,6 +243,7 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 - Interface familiar y amigable
 - Trabaja bien con JSON
 - Más de 20000 estrellas en github
+- Muy buena documentación
 - No reinventar la rueda
 - Había que elegir uno :)
 
