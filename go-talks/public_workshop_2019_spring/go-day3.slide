@@ -37,6 +37,8 @@ Pass: mercadolibre
 
 .play -edit ./resources/src/13_defer/ex2.go
 
+* Defer
+
 .play -edit ./resources/src/13_defer/ex3.go
 
 * Panic y Recover
