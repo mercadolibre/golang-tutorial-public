@@ -101,13 +101,13 @@ los channels son bloqueantes, es decir, cada vez que agregamos información a un
 
 * Channels continuación
 
-A la creación de un channel se le puede asignar un tamaño dando lugar a un buffered Channel:
+A la creación de un channel se le puede asignar un tamaño, dando lugar a un buffered Channel:
  
 	var sChannel chan string = make(chan string, 100)
  
-en estos casos el emisor sólo se bloqueará cuando el buffer esté lleno y el receptor cuando esté vacío.
+en estos casos, el emisor sólo se bloqueará cuando el buffer esté lleno, y el receptor cuando esté vacío.
 
-Útiles cuando
+Útiles cuando:
 
 - El número de goroutines a ser lanzando es conocido
 - Se quiere limitar el número de goroutines que van a ser lanzadas o la cantidad de trabajo encolado
@@ -120,7 +120,7 @@ Para iterar sobre el contenido de un channel podemos utilizar el for + range:
 
 * Channels continuación
 
-Usamos la función close() para cerrar un channel e indicar a todos los consumers que dicho channel no se van a enviar más elementos y así liberarlos.
+Usamos la función close() para cerrar un channel e indicar a todos los consumers que por dicho channel no se van a enviar más elementos.
  
 	close(intChannel)
  
@@ -130,9 +130,13 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 
 [[https://blog.golang.org/share-memory-by-communicating][Share memory by communicating]]
 
-* Wait usando channel
+* Wait usando channels
 
 .play -edit ./resources/src/22_channels/wait/main.go
+
+* Simple channel
+
+.play -edit ./resources/src/22_channels/simple/main.go
 
 * Buffered channel
 

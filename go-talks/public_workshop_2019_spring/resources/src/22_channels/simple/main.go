@@ -4,14 +4,23 @@ import (
 	"fmt"
 )
 
+// START OMIT
 func main() {
 
-	var sChannel chan string = make(chan string)
+	var sChannel = make(chan bool)
 
 	go func() {
-		sChannel <- "hello"
+		result := doJob()
+
+		sChannel <- result
 	}()
 
 	fmt.Println("Channel output: ", <-sChannel)
 
 }
+
+func doJob() bool {
+	return true
+}
+
+// END OMIT
