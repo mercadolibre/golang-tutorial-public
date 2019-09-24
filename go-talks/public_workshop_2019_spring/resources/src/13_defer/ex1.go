@@ -3,9 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Counting")
-	for i := 1; i <= 5; i++ {
-		defer fmt.Println(i)
-	}
-	fmt.Println("Done")
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
 }
