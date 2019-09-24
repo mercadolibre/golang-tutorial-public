@@ -79,7 +79,11 @@ Cada programa de Go tiene al menos una goroutine ("main() goroutine") que es cre
 
 * Channels
 
-Un channel en Golang es un tipo de dato, un conducto, que nos permite enviar y recibir mensajes a través de él.
+Un channel en Golang es un tipo de dato, un portal, que nos permite enviar y recibir mensajes a través de él.
+
+.image ./resources/portals.jpeg 400 _
+
+* Channels
 
 Creación de un channel:
 
@@ -93,7 +97,7 @@ y recibir información desde él:
 
 	var s string = <- sChannel
 
-los channels son bloqueantes, es decir, cada vez que agregamos información a un channel el emisor se bloquea hasta que un receptor toma el mensaje del conducto. Esto los hace una excelente herramienta para sincronizar goroutines sin un mecanismo de lock especifico.
+los channels son bloqueantes, es decir, cada vez que agregamos información a un channel el emisor se bloquea hasta que un receptor toma el mensaje del mismo. Esto los hace una excelente herramienta para sincronizar goroutines sin un mecanismo de lock específico.
 
 * Channels continuación
 
