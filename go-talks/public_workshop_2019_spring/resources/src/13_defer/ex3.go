@@ -3,12 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	leakedCount(2)
-}
-
-func leakedCount(n int) {
+	n := 5
 	fmt.Println("Counting")
-
 	i := 1
 	for i <= n {
 		fmt.Printf("In function: i=%d\n", i)
