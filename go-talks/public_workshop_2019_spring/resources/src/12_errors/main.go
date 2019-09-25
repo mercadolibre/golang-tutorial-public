@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// START OMIT
 type ApiError struct {
 	Message    string
 	StatusCode int
@@ -19,3 +20,5 @@ func main() {
 
 	//fmt.Printf("StatusCode: %d", err.StatusCode)
 }
+
+// END OMIT

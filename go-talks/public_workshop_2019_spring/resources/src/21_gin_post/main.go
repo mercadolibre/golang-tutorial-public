@@ -7,6 +7,7 @@ func main() {
 
 	router := gin.Default()
 
+	//curl -X POST -F 'name=jhon' localhost:8080/post
 	router.POST("/post", func(c *gin.Context) {
 
 		id := c.Query("id")

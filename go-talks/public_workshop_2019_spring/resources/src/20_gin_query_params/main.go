@@ -7,6 +7,7 @@ func main() {
 	router := gin.Default()
 
 	// The request responds to a url matching:  /welcome?firstname=Jane&lastname=Doe
+	// curl 'localhost:8080/welcome?firstname=Jane&lastname=Doe'
 	router.GET("/welcome", func(c *gin.Context) {
 
 		firstname := c.DefaultQuery("firstname", "Guest")

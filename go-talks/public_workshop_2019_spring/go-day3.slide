@@ -23,7 +23,7 @@ Pass: mercadolibre
 
 * Errors
 
-.play -edit ./resources/src/12_errors/main.go
+.play -edit ./resources/src/12_errors/main.go /START OMIT/,/END OMIT/
 
 * Defer
 
@@ -230,7 +230,6 @@ Uso: import "github.com/julienschmidt/httprouter"
 Descripción: Es un enrutador de solicitud HTTP de alto rendimiento basado en grafos
 
 
-
 - [[https://golang.org/pkg/net/http][*net/http*]]: HTTP Standard Library
 Uso: import "net/http"
 Descripción: Provee implementacion para HTTP client/server
@@ -278,6 +277,13 @@ Descripción: Provee implementacion para HTTP client/server
 
 .play -edit ./resources/src/19_gin_params/main.go
 
+* Params
+
+.play -edit ./resources/src/19_gin_params/ex1.go
+
+[[https://github.com/julienschmidt/httprouter#how-does-it-work][How does it work]]
+
+
 * Parámetros en Querystring
 
 .play -edit ./resources/src/20_gin_query_params/main.go
@@ -295,6 +301,10 @@ Descripción: Provee implementacion para HTTP client/server
 	r := gin.Default()    equivale a 	   r := gin.New()
 											r.Use(gin.Logger())
 											r.Use(gin.Recovery())
+
+	// Default returns an Engine instance with the Logger and Recovery middleware already attached.
+	// Logger instances a Logger middleware that will write the logs to gin.DefaultWriter (gin.DefaultWriter = os.Stdout).
+	// Recovery returns a middleware that recovers from any panics and writes a 500 if there was one.
 
 .image ./resources/gingonic_middlewares.png
 

@@ -5,9 +5,6 @@ import "net/http"
 
 func main() {
 
-	// user/:name
-	// user/locale/:name
-
 	router := gin.Default()
 
 	router.GET("/user/:name", func(c *gin.Context) {
@@ -15,11 +12,8 @@ func main() {
 		c.String(http.StatusOK, "Hello %s", name)
 	})
 
-	router.GET("/user/:name/*action", func(c *gin.Context) {
-		name := c.Param("name")
-		action := c.Param("action")
-		message := name + " is " + action
-		c.String(http.StatusOK, message+"\n")
+	router.GET("/user/me", func(c *gin.Context) {
+		c.String(http.StatusOK, "I'm")
 	})
 
 	router.Run(":8080")
