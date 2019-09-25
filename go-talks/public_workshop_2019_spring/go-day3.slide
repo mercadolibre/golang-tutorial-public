@@ -185,6 +185,14 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 
 .play -edit ./resources/src/22_channels/leaks/context.go /START OMIT/,/END OMIT/
 
+* Goroutine leaks - Links
+
+- [[https://www.youtube.com/watch?v=ynoY2xz-F8s][*Understanding* *Nil*]]
+
+- [[https://github.com/uber-go/goleak][*Goleak*]]: Uber lib for leaks testing
+
+- [[https://github.com/fortytw2/leaktest][*Leaktest*]]: Another leaks testing lib
+
 * Building APIs in Go
 
 .image ./resources/gingonic.png 500 500
