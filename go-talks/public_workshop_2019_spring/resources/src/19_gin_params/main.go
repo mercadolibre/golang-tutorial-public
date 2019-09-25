@@ -16,7 +16,7 @@ func main() {
 		name := c.Param("name")
 		action := c.Param("action")
 		message := name + " is " + action
-		c.String(http.StatusOK, message+"\n")
+		c.String(http.StatusOK, message+" \n")
 	})
 
 	router.Run(":8080")

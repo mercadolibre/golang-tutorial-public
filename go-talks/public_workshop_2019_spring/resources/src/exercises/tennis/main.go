@@ -45,21 +45,21 @@ func player(name string, court chan int) {
 		ball, wd := <-court
 		if !wd {
 
-			fmt.Printf("Player %s Won\n", name)
+			fmt.Printf("Player %s Won \n", name)
 			return
 		}
 
 		// Elegir un numero aleatorio y ver si le pegamos a la pelota
 		n := rand.Intn(100)
 		if n%13 == 0 {
-			fmt.Printf("Player %s Missed\n", name)
+			fmt.Printf("Player %s Missed \n", name)
 
 			close(court)
 			return
 		}
 
 		// Imprimir que el jugador le pego a la pelota y aumentar la cuenta
-		fmt.Printf("Player %s Hit %d\n", name, ball)
+		fmt.Printf("Player %s Hit %d \n", name, ball)
 		ball++
 
 		// Devolverle la pelota al oponente

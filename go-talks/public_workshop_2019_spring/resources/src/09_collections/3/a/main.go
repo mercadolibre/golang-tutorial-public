@@ -10,10 +10,10 @@ func main() {
 	delete(m, 3)
 
 	elem := m[2]
-	fmt.Printf("Value: %d\n", elem)
+	fmt.Printf("Value: %d \n", elem)
 
 	elem, ok := m[2]
-	fmt.Printf("Value: %d - def: %t\n", elem, ok)
+	fmt.Printf("Value: %d - def: %t \n", elem, ok)
 
 	elem, ok = m[3]
 	fmt.Printf("Value: %d - def: %t", elem, ok)

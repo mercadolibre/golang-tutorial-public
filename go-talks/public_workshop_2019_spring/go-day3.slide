@@ -21,6 +21,10 @@ Red -> guest
 
 Pass: mercadolibre
 
+* Esta presentación es auto-referencial 🤓:
+
+https://bit.ly/2kp2XhZ
+
 * Errors
 
 .play -edit ./resources/src/12_errors/main.go /START OMIT/,/END OMIT/
@@ -53,13 +57,15 @@ El panic se propaga recursivamente hacia arriba a todos los clientes.
 
 * Panic y Recover
 
+Recover permite frenar la propagación del panic y recuperar el error que lo originó.
+
 .play -edit ./resources/src/16_recover/ex2.go /START OMIT/,/END OMIT/
 
 [[https://about.sourcegraph.com/blog/go-when-is-it-ok-to-recover][When it is ok to recover?]]
 
 * Goroutines
 
-Una goroutine es una función que se ejecuta concurrentemente con otro código.
+Una goroutine es un hilo liviano (2k) que permite la ejecución de código de forma concurrente.
 
 Cada programa de Go tiene al menos una goroutine ("main() goroutine") que es creada y ejecutada automáticamente cuando el proceso comienza.
 

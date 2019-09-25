@@ -28,7 +28,7 @@ type Shape interface {
 }
 
 func PrintArea(s Shape) {
-	fmt.Printf("Area: %f\n", s.Area())
+	fmt.Printf("Area: %f \n", s.Area())
 }
 
 func main() {

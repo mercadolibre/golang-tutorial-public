@@ -13,7 +13,7 @@ func main() {
 		firstname := c.DefaultQuery("firstname", "Guest")
 		lastname := c.Query("lastname")
 
-		c.String(http.StatusOK, "Hello %s %s\n", firstname, lastname)
+		c.String(http.StatusOK, "Hello %s %s \n", firstname, lastname)
 
 	})
 

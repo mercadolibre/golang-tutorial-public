@@ -12,5 +12,5 @@ func main() {
 	sChannel <- "world"
 	sChannel <- "!"
 
-	fmt.Printf("%s %s\n", <-sChannel)
+	fmt.Printf("%s %s \n", <-sChannel)
 }

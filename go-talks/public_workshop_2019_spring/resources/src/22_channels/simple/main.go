@@ -15,7 +15,7 @@ func main() {
 		sChannel <- result
 	}()
 
-	fmt.Println("Channel output: ", <-sChannel)
+	fmt.Println("Channel output:", <-sChannel)
 
 }
 

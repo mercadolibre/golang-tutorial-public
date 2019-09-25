@@ -11,5 +11,5 @@ func main() {
 	for _, val := range args {
 		result = math.Add(result, val)
 	}
-	fmt.Printf("Suma: %d\n", result)
+	fmt.Printf("Suma: %d \n", result)
 }

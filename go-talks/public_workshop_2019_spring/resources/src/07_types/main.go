@@ -34,12 +34,12 @@ func FToC(f Fahrenheit) Celsius {
 func main() {
 	args := []float64{15, 2, 20, 100, 120}
 
-	fmt.Printf("f = FToC(f) \t c = CToF(c)\n")
+	fmt.Printf("f = FToC(f) \t c = CToF(c) \n")
 
 	for _, t := range args {
 		f := Fahrenheit(t)
 		c := Celsius(t)
-		fmt.Printf("%s = %s \t %s = %s\n",
+		fmt.Printf("%s = %s \t %s = %s \n",
 			f, FToC(f).String(), c, CToF(c).String())
 	}
 }

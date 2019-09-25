@@ -9,4 +9,4 @@ var s string
 
 func init() { fmt.Println("Se ejecuta init") }
 
-func main() { fmt.Printf("%v %v %v %q\n", i, f, b, s) }
+func main() { fmt.Printf("%v %v %v %q \n", i, f, b, s) }

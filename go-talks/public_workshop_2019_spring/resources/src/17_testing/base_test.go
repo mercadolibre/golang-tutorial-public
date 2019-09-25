@@ -34,7 +34,7 @@ func checkContent(t *testing.T, response *httptest.ResponseRecorder, content str
 //Check the status code
 func checkStatus(t *testing.T, response *httptest.ResponseRecorder, expected int) {
 	if response.Code != expected {
-		t.Fatalf("Non-expected status code %v :\n\tbody: %v", expected, response.Code)
+		t.Fatalf("Non-expected status code %v : \n\tbody: %v", expected, response.Code)
 	}
 }
 

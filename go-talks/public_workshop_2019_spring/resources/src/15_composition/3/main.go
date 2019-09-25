@@ -8,7 +8,7 @@ type Ball struct {
 }
 
 func (b Ball) Bounce() {
-	fmt.Printf("Bouncing ball %+v\n", b)
+	fmt.Printf("Bouncing ball %+v \n", b)
 }
 
 type Football struct {

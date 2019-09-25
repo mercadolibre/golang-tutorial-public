@@ -10,7 +10,7 @@ func main() {
 	poolSize, totalJobs := 5, 50
 	pool, jobDone, allDone := MakePool(poolSize, totalJobs)
 
-	fmt.Printf("Start jobs\n\n")
+	fmt.Printf("Start jobs \n \n")
 
 	for i := 0; i < totalJobs; i++ {
 
@@ -18,16 +18,16 @@ func main() {
 			<-pool
 			defer func() { jobDone <- true }()
 
-			fmt.Printf("Starting job %d\n", job)
+			fmt.Printf("Starting job %d \n", job)
 
 			time.Sleep(500 * time.Millisecond)
 
-			fmt.Printf("Ending job %d\n", job)
+			fmt.Printf("Ending job %d \n", job)
 		}(i + 1)
 	}
 	<-allDone
 
-	fmt.Printf("\nEnd jobs")
+	fmt.Printf(" \nEnd jobs")
 }
 
 // END OMIT

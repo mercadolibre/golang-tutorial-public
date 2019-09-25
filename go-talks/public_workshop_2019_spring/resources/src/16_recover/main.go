@@ -20,7 +20,7 @@ func main() {
 func panicFunc() {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Printf("Panic recovered. Error:%v\n", err)
+			fmt.Printf("Panic recovered. Error:%v \n", err)
 		}
 	}()
 

@@ -12,19 +12,19 @@ func main() {
 	time.Sleep(500 * time.Millisecond)
 
 	start := runtime.NumGoroutine()
-	fmt.Printf("Start: %d\n", start)
+	fmt.Printf("Start: %d \n", start)
 
 	_ = LeakedJob()
 
 	time.Sleep(500 * time.Millisecond)
 
 	end := runtime.NumGoroutine()
-	fmt.Printf("End: %d\n", end)
+	fmt.Printf("End: %d \n", end)
 
 	if end > start {
-		fmt.Printf("\nError! Start: %d - End: %d\n", start, end)
+		fmt.Printf(" \nError! Start: %d - End: %d \n", start, end)
 	} else {
-		fmt.Println("\nOk")
+		fmt.Println(" \nOk")
 	}
 }
 
