@@ -1,24 +1,32 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 import "fmt"
 
+// START OMIT
 func main() {
 
 	router := gin.Default()
 
-	//curl -X POST -F 'name=jhon' localhost:8080/post
+	//curl -X POST -F 'username=jhon' -F 'password=123' localhost:8080/post
 	router.POST("/post", func(c *gin.Context) {
 
-		id := c.Query("id")
-		page := c.DefaultQuery("page", "0")
-		name := c.PostForm("name")
-		message := c.PostForm("message")
+		username := c.PostForm("username")
+		password := c.PostForm("password")
 
-		fmt.Printf("id: %s; page: %s; name: %s; message: %s", id, page, name, message)
+		fmt.Printf("username: %s; password: %s", username, password)
+
+		c.Writer.WriteHeader(http.StatusOK)
+		c.Writer.Write([]byte("<html><body><h2>Datos Enviados -> " +
+			"Usuario: " + username + " -> Password: " + password + "</h2></body></html>"))
 
 	})
 
 	router.Run(":8080")
 
 }
+
+// END OMIT
