@@ -150,9 +150,9 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 
 .play -edit ./resources/src/22_channels/pool/ex1.go /START OMIT/,/END OMIT/
 
-* Channel Synchronization
+* Select with channels
 
-.play -edit ./resources/src/22_channels/synchronization/select/main.go
+.play -edit ./resources/src/22_channels/synchronization/select/main.go /START OMIT/,/END OMIT/
 
 * Ejercicio
 
