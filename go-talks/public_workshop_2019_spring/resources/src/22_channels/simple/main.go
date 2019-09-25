@@ -20,6 +20,7 @@ func main() {
 }
 
 func doJob() bool {
+	// Do some task and return the result
 	return true
 }
 
