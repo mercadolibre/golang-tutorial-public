@@ -31,15 +31,15 @@ Pass: mercadolibre
 - Los argumentos de una función diferida son evaluados al momento de evaluar la sentencia defer.
 - Las llamadas a funciones diferidas son ejecutadas siguiendo un orden LIFO luego de que la función que las contiene devuelve el control.
 
-.play -edit ./resources/src/13_defer/ex1.go
+.play -edit ./resources/src/13_defer/ex1.go /START OMIT/,/END OMIT/
 
 * Defer
 
-.play -edit ./resources/src/13_defer/ex2.go
+.play -edit ./resources/src/13_defer/ex2.go /START OMIT/,/END OMIT/
 
 * Defer
 
-.play -edit ./resources/src/13_defer/ex3.go
+.play -edit ./resources/src/13_defer/ex3.go /START OMIT/,/END OMIT/
 
 * Panic y Recover
 
@@ -48,7 +48,8 @@ panic() debe ser utilizado únicamente donde el error es irrecuperable y no tien
 
 .play -edit ./resources/src/16_recover/ex1.go
 
-Cuando una función F() llama a panic(), se frena la ejecución de F, todas las funciones diferidas son ejecutadas normalmente y luego F() retorna al cliente que la invoca. Para el cliente, F() se comporta como una llamada a panic().
+Cuando una función F() llama a panic(), se frena la ejecución de F, se ejecutan todos los defer y F() retorna al cliente que la invocó.
+El panic se propaga recursivamente hacia arriba a todos los clientes.
 
 * Panic y Recover
 

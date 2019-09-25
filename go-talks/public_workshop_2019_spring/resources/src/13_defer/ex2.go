@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// START OMIT
 func main() {
 	reverseCount(5)
 }
@@ -13,3 +14,4 @@ func reverseCount(n int) {
 	}
 	fmt.Println("Done")
 }
+// END OMIT

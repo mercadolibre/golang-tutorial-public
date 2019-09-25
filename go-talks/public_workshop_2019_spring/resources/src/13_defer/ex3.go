@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// START OMIT
 func main() {
 	leakedCount(2)
 }
@@ -19,3 +20,4 @@ func leakedCount(n int) {
 	}
 	fmt.Println("Done")
 }
+// END OMIT
