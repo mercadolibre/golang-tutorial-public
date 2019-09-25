@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Ejemplo Golang Gin Form</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    ​
+    ​
+    <div class="bd-callout bd-callout-info">
+        <h3>Envio de datos usando un Form</h3>
+        <p>
+            En este ejemplo enviaras los datos del user y password a traves de un simple form html el cual sera
+        </p>
+        <p>
+            recibido por la <code>Api en Go</code> la cual los procesara e imprimira en la consola.
+        </p>
+    </div>
+    <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" id="loginbox" style="margin-top:50px;">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a>
+                </div>
+            </div>
+            ​
+            <div class="panel-body" style="padding-top:30px">
+                ​
+                <div class="alert alert-danger col-sm-12" id="login-alert" style="display:none"></div>
+                ​
+                <form action="http://localhost:8080/post" method="post" class="form-horizontal" id="loginform" role="form">
+                    ​
+                    <div class="input-group" style="margin-bottom: 25px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input class="form-control" id="login-username" name="username" placeholder="username or email"
+                               type="text"
+                               value="">
+                    </div>
+                    ​
+                    <div class="input-group" style="margin-bottom: 25px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" id="login-password" name="password" placeholder="password"
+                               type="password">
+                    </div>
+                    ​
+                    ​
+                    <div class="form-group" style="margin-top:10px">
+                        <!-- Button -->
+                        ​
+                        <div class="col-md-12 controls">
+                            <input class="btn btn-success" type="submit"></input>
+                        </div>
+                    </div>
+                    ​
+                    ​
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Don't have an account!
+                                <a href="#">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                ​
+                ​
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
