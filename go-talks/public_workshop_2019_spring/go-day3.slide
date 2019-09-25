@@ -295,7 +295,7 @@ Descripción: Provee implementacion para HTTP client/server
 
 * Otro ejemplo: query + post form
 
-.play -edit ./resources/src/21_gin_post/main.go
+.play -edit ./resources/src/21_gin_post/main.go /START OMIT/,/END OMIT/
 
 * Model Binding y validación
 

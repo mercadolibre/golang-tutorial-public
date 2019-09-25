@@ -6,6 +6,7 @@ import (
 )
 import "fmt"
 
+// START OMIT
 func main() {
 
 	router := gin.Default()
@@ -19,10 +20,13 @@ func main() {
 		fmt.Printf("username: %s; password: %s", username, password)
 
 		c.Writer.WriteHeader(http.StatusOK)
-		c.Writer.Write([]byte("<html><body><h2>Datos Enviados -> Usuario: " + username + " -> Password: "+ password +"</h2></body></html>"))
+		c.Writer.Write([]byte("<html><body><h2>Datos Enviados -> " +
+			"Usuario: " + username + " -> Password: " + password + "</h2></body></html>"))
 
 	})
 
 	router.Run(":8080")
 
 }
+
+// END OMIT
