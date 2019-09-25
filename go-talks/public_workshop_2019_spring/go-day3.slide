@@ -161,6 +161,30 @@ los consumers pueden chequear el status de un channel mediante un segundo parám
 	entre Del Potro y Djokovic, usando goroutines y unbuffered channels. 
 	Extra: Tratemos de que gane Del Potro.
 
+* Goroutine leaks
+
+.play -edit ./resources/src/22_channels/leaks/main.go /START OMIT/,/END OMIT/
+
+* Goroutine leaks - Testing
+
+.play -edit ./resources/src/22_channels/leaks/leaktest.go /START OMIT/,/END OMIT/
+
+* Goroutine leaks - Solution
+
+.play -edit ./resources/src/22_channels/leaks/noreturn.go /START OMIT/,/END OMIT/
+
+* Goroutine leaks - Solution
+
+.play -edit ./resources/src/22_channels/leaks/buffered.go /START OMIT/,/END OMIT/
+
+* Goroutine leaks - Solution
+
+.play -edit ./resources/src/22_channels/leaks/ctxjob.go
+
+* Goroutine leaks - Solution
+
+.play -edit ./resources/src/22_channels/leaks/context.go /START OMIT/,/END OMIT/
+
 * Building APIs in Go
 
 .image ./resources/gingonic.png 500 500
