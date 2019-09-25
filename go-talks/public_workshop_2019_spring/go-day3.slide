@@ -81,7 +81,7 @@ Cada programa de Go tiene al menos una goroutine ("main() goroutine") que es cre
 
 Un channel en Golang es un tipo de dato, un portal, que nos permite enviar y recibir mensajes a través de él.
 
-.image ./resources/portals.jpeg 400 _
+.image ./resources/portals.jpg 420 _
 
 * Channels
 
